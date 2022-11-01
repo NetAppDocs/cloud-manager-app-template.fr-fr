@@ -1,0 +1,719 @@
+---
+sidebar: sidebar 
+permalink: task-define-templates.html 
+keywords: templates, resource templates, services templates, volume templates, cvo working environment template, find volumes 
+summary: 'Sélectionnez une ou plusieurs des « actions » fournies par NetApp et créez rapidement un modèle d"application que votre entreprise peut utiliser pour commencer à optimiser la création des ressources.' 
+---
+= Création de modèles d'application pour votre organisation
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Sélectionnez une ou plusieurs des « actions » fournies par NetApp et créez rapidement un modèle d'application que votre entreprise peut utiliser pour commencer à optimiser la création des ressources.
+
+
+
+== Démarrage rapide
+
+Pour commencer rapidement, suivez ces étapes ou faites défiler jusqu'aux sections restantes pour obtenir de plus amples informations.
+
+.<span class=« image »><img src="https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png"[] alt=« one »></span> vérifier les prérequis requis
+* Avant de pouvoir créer un volume pour un système Cloud Volumes ONTAP, ONTAP sur site ou Azure NetApp Files à l'aide d'un modèle, assurez-vous qu'ils ont accès à un environnement de travail approprié dans lequel le volume sera déployé.
+
+
+* Si vous prévoyez d'ajouter une « action » de service cloud à votre modèle, par exemple https://docs.netapp.com/us-en/cloud-manager-backup-restore/concept-backup-to-cloud.html["La sauvegarde dans le cloud"^] ou https://docs.netapp.com/us-en/cloud-manager-data-sense/concept-cloud-compliance.html["Sens des données cloud"^], assurez-vous que le service est actif et sous licence dans votre environnement.
+
+
+[role="quick-margin-para"]
+Sélectionnez *Santé > correction*, cliquez sur l'onglet *Editeur* et sélectionnez les actions que vous utiliserez dans votre modèle.
+
+[role="quick-margin-para"]
+Suivez les étapes de création et définissez les actions qui seront effectuées par le modèle.
+
+
+
+== De formation
+
+Lisez les informations suivantes pour vous assurer que votre configuration est prise en charge.
+
+* Si vous n'avez pas encore de connecteur, https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-connectors.html["Voir comment créer des connecteurs"^] Pour AWS, Azure et GCP.
+* Lorsque vous créez un modèle de volume Cloud Volumes ONTAP, assurez-vous que vous disposez d'un environnement de travail Cloud Volumes ONTAP disponible pour vos utilisateurs. Découvrez comment lancer un système Cloud Volumes ONTAP dans https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-deploying-otc-aws.html["AWS"^], https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-deploying-otc-azure.html["Azure"^], ou dans https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-deploying-gcp.html["GCP"^].
+* Lorsque vous créez un modèle de volume ONTAP sur site, veillez à disposer d'un environnement de travail ONTAP sur site. Découvrez comment https://docs.netapp.com/us-en/cloud-manager-ontap-onprem/task-discovering-ontap.html["Découvrez un système ONTAP sur site"^] Dans BlueXP.
+* Lors de la création d'un modèle de volume Azure NetApp Files, assurez-vous que vous disposez d'un environnement de travail Azure NetApp Files disponible pour vos utilisateurs. Découvrez comment https://docs.netapp.com/us-en/cloud-manager-azure-netapp-files/task-quick-start.html["Créer un environnement de travail Azure NetApp Files"^] Dans BlueXP.
+* Si vous envisagez d'utiliser Cloud Backup pour sauvegarder un volume dans le modèle, vérifiez que votre environnement a activé Cloud Backup.
+* Si vous envisagez d'utiliser Cloud Data Sense pour analyser les volumes dans le modèle, assurez-vous que votre environnement a activé Cloud Data SENSE.
+* Si vous prévoyez d'activer la réplication dans le modèle et que le modèle concerne un volume ONTAP sur site, le cluster ONTAP doit disposer d'une licence SnapMirror active.
+
+
+
+
+== Exemples de création de ressources à l'aide de modèles
+
+Les modèles de ressources vous permettent de créer de nouveaux volumes ou un nouvel environnement de travail Cloud Volumes ONTAP.
+
+
+
+=== Créez un modèle pour un volume Cloud Volumes ONTAP
+
+Voir https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-create-volumes.html["Provisionnement de volumes Cloud Volumes ONTAP"^] Pour plus d'informations sur les paramètres à compléter dans le modèle de volume Cloud Volumes ONTAP.
+
+Pour cet exemple, nous allons créer un modèle nommé « volume CVO pour les bases de données » et inclure les 2 actions suivantes :
+
+* Créer un volume Cloud Volumes ONTAP
++
+Définissez le volume pour l'environnement AWS, configurez-le avec 100 Go de stockage, définissez la règle Snapshot sur « par défaut » et activez l'efficacité du stockage.
+
+* Activation de Cloud Backup
++
+Créer 30 sauvegardes quotidiennes, 13 sauvegardes hebdomadaires et 3 sauvegardes mensuelles (à l'aide de la politique de rétention_ de _3 mois).
+
+
+
+.Étapes
+. Sélectionnez *Santé > correction*, cliquez sur l'onglet *modèles* et cliquez sur *Ajouter un nouveau modèle*.
++
+La page _Select_a Template_ s'affiche.
+
++
+image:screenshot_create_template_primary_action_cvo.png["Capture d'écran indiquant comment sélectionner l'action principale qui sera exécutée à l'aide de ce modèle."]
+
+. Sélectionnez *Volume pour Cloud Volumes ONTAP + sauvegarde* comme type de ressource à créer, puis cliquez sur *commencer*.
++
+La page _Créer un volume dans Cloud Volumes ONTAP action Definition_ s'affiche.
+
++
+image:screenshot_create_template_define_action_cvo.png["Capture d'écran montrant un modèle CVO vide que vous devez remplir."]
+
+. *Nom de l'action* : si vous le souhaitez, entrez un nom d'action personnalisé au lieu de la valeur par défaut.
+. *Contexte:* Entrez le contexte de l'environnement de travail Cloud Volumes ONTAP; si nécessaire.
++
+Lorsque les utilisateurs lancent le modèle à partir d'un environnement de travail existant, ces informations sont automatiquement renseignées.
+
++
+Lorsque les utilisateurs lancent le modèle à partir du tableau de bord modèles (pas dans un contexte d'environnement de travail), ils doivent sélectionner l'environnement de travail et le SVM où le volume sera créé. C'est la raison pour laquelle ces champs sont marqués comme étant « modifiables ».
+
+. *Détails:* Entrez le nom et la taille du volume.
++
+[cols="25,75"]
+|===
+| Champ | Description 
+
+
+| Nom du volume | Cliquez dans le champ et sélectionnez l'une des 5 options. Vous pouvez laisser l'administrateur entrer un nom en sélectionnant *texte libre*, ou vous pouvez spécifier que le nom du volume doit avoir un préfixe ou un suffixe spécifique, qu'il _contient_ certains caractères, ou qu'il suit les règles d'une expression régulière (regex) que vous saisissez. Par exemple, vous pouvez indiquer que "db" est un préfixe, un suffixe ou un contenu requis ; il faut à l'utilisateur d'ajouter des noms de volume tels que "db_vol1", "vol1_db" ou "vol_db_1". 
+
+
+| Taille du volume | Vous pouvez spécifier une plage de valeurs autorisées ou une taille fixe. Cette valeur est en GB. Pour notre exemple, nous pouvons ajouter une valeur fixe *100*. 
+
+
+| Étiquettes | Saisissez une paire de noms et de valeurs pour une balise que vous souhaitez associer à ce volume. Par exemple, vous pouvez ajouter "centre de coûts" comme nom de balise et le code de centre de coûts "6655829" comme valeur. Vous pouvez associer plusieurs balises à un volume en ajoutant plusieurs paires de noms de balises et de valeurs. 
+|===
+. *Protection:* Choisissez si les copies Snapshot du volume seront créées en sélectionnant « par défaut » ou une autre règle, ou bien « aucune » si vous ne souhaitez pas créer de copies Snapshot.
+. *Profil d'utilisation :* Choisissez si les fonctionnalités d'efficacité du stockage NetApp sont appliquées ou non au volume. Cela inclut le provisionnement fin, la déduplication et la compression. Pour notre exemple, vous gardez toujours un niveau d'efficacité du stockage activé.
+. *Disk Type:* Choisissez le fournisseur de stockage cloud et le type de disque. Certaines sélections de disques permettent également de sélectionner une valeur d'IOPS ou de débit (Mbit/s) minimale et maximale, définissant ainsi une certaine qualité de service (QoS).
+. *Options de protocole:* sélectionnez *NFS* ou *SMB* pour définir le protocole du volume. Puis le fournit les détails du protocole.
++
+[cols="25,75"]
+|===
+| Champs NFS | Description 
+
+
+| Contrôle d'accès | Indiquez si des contrôles d'accès sont nécessaires pour accéder au volume. 
+
+
+| Export policy | Créez une export policy pour définir les clients dans le sous-réseau pouvant accéder au volume. 
+
+
+| Version NFS | Sélectionnez la version NFS du volume : _NFSv3_ ou _NFSv4_, ou sélectionnez les deux. 
+|===
++
+[cols="25,75"]
+|===
+| Champs SMB | Description 
+
+
+| Nom de partage | Cliquez dans le champ et sélectionnez l'une des 5 options. Vous pouvez laisser l'administrateur entrer n'importe quel nom (texte libre) ou vous pouvez spécifier que le nom du partage doit avoir un préfixe ou un suffixe spécifique, qu'il _contient_ certains caractères, ou qu'il suit les règles d'une expression régulière (regex) que vous saisissez. 
+
+
+| Autorisations | Sélectionnez le niveau d'accès à un partage pour les utilisateurs et les groupes (également appelés listes de contrôle d'accès ou listes de contrôle d'accès). 
+
+
+| Utilisateurs / groupes | Spécifiez les utilisateurs ou groupes Windows locaux ou de domaine, ou les utilisateurs ou groupes UNIX. Si vous spécifiez un nom d'utilisateur Windows de domaine, vous devez inclure le domaine de l'utilisateur à l'aide du format domaine\nom d'utilisateur. 
+|===
+. *Tiering:* Choisissez la règle de Tiering que vous souhaitez appliquer au volume, ou définissez cette règle sur « aucun » si vous ne souhaitez pas transférer les données inactives de ce volume vers le stockage objet.
++
+Voir https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/concept-data-tiering.html#volume-tiering-policies["règles de tiering des volumes"^] pour une vue d'ensemble, et voir https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-tiering.html["Tiering des données inactives vers le stockage objet"^] afin d'être certain que votre environnement est configuré pour le tiering.
+
+. Cliquez sur *appliquer* après avoir défini les paramètres requis pour cette action.
++
+Si les valeurs du modèle sont correctement complétées, une coche verte est ajoutée à la case « Créer un volume dans Cloud Volumes ONTAP ».
+
+. Cliquez sur la case *Activer la sauvegarde dans le Cloud sur le volume* et la boîte de dialogue _Activer la sauvegarde dans le Cloud sur le volume action Definition_ s'affiche pour vous permettre de compléter les détails de la sauvegarde dans le Cloud.
++
+image:screenshot_create_template_add_action.png["Capture d'écran affichant des actions supplémentaires que vous pouvez ajouter au volume créé."]
+
+. Sélectionnez la stratégie de sauvegarde * 3 mois Retention* pour créer 30 sauvegardes quotidiennes, 13 hebdomadaires et 3 mois.
+. Sous les champs Environnement de travail et Nom du volume, trois sélections sont disponibles pour indiquer le volume sur lequel la sauvegarde est activée. Voir link:reference-template-building-blocks.html#pass-values-between-template-actions["comment remplir ces champs"].
+. Cliquez sur *appliquer* et la boîte de dialogue sauvegarde dans le cloud est enregistrée.
+. Entrez le nom du modèle *Volume CVO pour les bases de données* (pour cet exemple) dans le coin supérieur gauche.
+. Cliquez sur *Paramètres et dérive* pour fournir une description plus détaillée de sorte que ce modèle puisse être distingué d'autres modèles similaires, et vous pouvez ainsi activer dérive pour le modèle global, puis cliquez sur *appliquer*.
++
+Dérive permet à BlueXP de surveiller les valeurs codées en dur que vous avez saisies pour les paramètres lors de la création de ce modèle.
+
+. Cliquez sur *Enregistrer le modèle*.
+
+
+Le modèle est créé et vous êtes renvoyé au tableau de bord modèles où apparaît votre nouveau modèle.
+
+Voir  to do after you have created the template,ce que vous devez dire à vos utilisateurs sur les modèles.
+
+
+
+=== Créez un modèle pour un volume Azure NetApp Files
+
+La création d'un modèle pour un volume Azure NetApp Files se fait de la même manière que la création d'un modèle pour un volume Cloud Volumes ONTAP.
+
+Voir https://docs.netapp.com/us-en/cloud-manager-azure-netapp-files/task-manage-anf-volumes.html#creating-volumes["Provisionnement de volumes Azure NetApp Files"^] Pour plus d'informations sur tous les paramètres à compléter dans le modèle de volume ANF.
+
+.Étapes
+. Sélectionnez *Santé > correction*, cliquez sur l'onglet *modèles* et cliquez sur *Ajouter un nouveau modèle*.
++
+La page _Select_a Template_ s'affiche.
+
++
+image:screenshot_create_template_primary_action_blank.png["Capture d'écran indiquant comment sélectionner l'action principale qui sera exécutée à l'aide de ce modèle."]
+
+. Sélectionnez *modèle vierge* et cliquez sur *commencer*.
+. Sélectionnez *Créer un volume dans Azure NetApp Files* comme type de ressource à créer, puis cliquez sur *appliquer*.
++
+La page _Créer un volume dans Azure NetApp Files action Definition_ s'affiche.
+
++
+image:screenshot_create_template_define_action_anf.png["Capture d'écran montrant un modèle ANF vide que vous devez remplir."]
+
+. *Nom de l'action* : si vous le souhaitez, entrez un nom d'action personnalisé au lieu de la valeur par défaut.
+. *Détails du volume :* Entrez un nom et une taille de volume, et spécifiez éventuellement des balises pour le volume.
++
+[cols="25,75"]
+|===
+| Champ | Description 
+
+
+| Nom du volume | Cliquez dans le champ et sélectionnez l'une des 5 options. Vous pouvez laisser l'administrateur entrer un nom en sélectionnant *texte libre*, ou vous pouvez spécifier que le nom du volume doit avoir un préfixe ou un suffixe spécifique, qu'il _contient_ certains caractères, ou qu'il suit les règles d'une expression régulière (regex) que vous saisissez. Par exemple, vous pouvez indiquer que "db" est un préfixe, un suffixe ou un contenu requis ; il faut à l'utilisateur d'ajouter des noms de volume tels que "db_vol1", "vol1_db" ou "vol_db_1". 
+
+
+| Taille du volume | Vous pouvez spécifier une plage de valeurs autorisées ou une taille fixe. Cette valeur est en GB. 
+
+
+| Étiquettes | Saisissez une paire de noms et de valeurs pour une balise que vous souhaitez associer à ce volume. Par exemple, vous pouvez ajouter "centre de coûts" comme nom de balise et le code de centre de coûts "6655829" comme valeur. Vous pouvez associer plusieurs balises à un volume en ajoutant plusieurs paires de noms de balises et de valeurs. 
+|===
+. *Protocole:* sélectionnez *NFSv3*, *NFSv4.1* ou *SMB* pour définir le protocole du volume. Puis le fournit les détails du protocole.
++
+[cols="25,75"]
+|===
+| Champs NFS | Description 
+
+
+| Chemin du volume | Sélectionnez l'une des 5 options. Vous pouvez laisser l'administrateur entrer n'importe quel chemin en sélectionnant *texte libre*, ou vous pouvez spécifier que le nom du chemin d'accès doit avoir un préfixe ou un suffixe spécifique, qu'il _contient_ certains caractères, ou qu'il suit les règles d'une expression régulière (regex) que vous saisissez. 
+
+
+| Règles d'export-policy | Créez une export policy pour définir les clients dans le sous-réseau pouvant accéder au volume. 
+|===
++
+[cols="25,75"]
+|===
+| Champs SMB | Description 
+
+
+| Chemin du volume | Sélectionnez l'une des 5 options. Vous pouvez laisser l'administrateur entrer n'importe quel chemin en sélectionnant *texte libre*, ou vous pouvez spécifier que le nom du chemin d'accès doit avoir un préfixe ou un suffixe spécifique, qu'il _contient_ certains caractères, ou qu'il suit les règles d'une expression régulière (regex) que vous saisissez. 
+|===
+. *Contexte:* Entrez l'environnement de travail Azure NetApp Files, les détails d'un nouveau compte Azure NetApp Files ou d'un compte existant, et d'autres détails.
++
+[cols="25,75"]
+|===
+| Champ | Description 
+
+
+| Environnement de travail | Lorsque les utilisateurs de l'administrateur du stockage lancent le modèle à partir d'un environnement de travail existant, ces informations sont automatiquement renseignées. Lorsque les utilisateurs lancent le modèle à partir du tableau de bord modèles (pas dans un contexte d'environnement de travail), ils doivent sélectionner l'environnement de travail dans lequel le volume sera créé. 
+
+
+| Nom du compte NetApp | Entrez le nom que vous souhaitez utiliser pour le compte. 
+
+
+| ID d'abonnement Azure | Entrez l'ID d'abonnement Azure. Il s'agit de l'ID complet dans un format similaire à "2b04f26-7de6-42eb-9234-e2903d7s327". 
+
+
+| Région | Entrez la région à l'aide de https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.documents.locationnames?view=azure-dotnet#fields["nom de la région interne"^]. 
+
+
+| Nom du groupe de ressources | Entrez le nom du groupe de ressources à utiliser. 
+
+
+| Nom du pool de capacité | Entrez le nom d'un pool de capacité existant. 
+
+
+| Sous-réseau | Entrez le vnet et le sous-réseau. Cette valeur inclut le chemin complet, dans un format similaire à "/souscriptions/<ID_abonnement>/resourceGroups/<groupe_ressource>/ fournisseurs/Microsoft.Network/virtualNetworks/<vpc_name>/subnets/<subhet_name>". 
+|===
+. *Copie snapshot :* Entrez l'ID d'instantané d'un instantané de volume existant si vous souhaitez créer ce nouveau volume à l'aide des caractéristiques d'un volume existant.
+. Cliquez sur *appliquer* après avoir défini les paramètres requis pour cette action.
+. Saisissez le nom à utiliser pour le modèle en haut à gauche.
+. Cliquez sur *Paramètres et dérive* pour fournir une description plus détaillée de sorte que ce modèle puisse être distingué d'autres modèles similaires, et vous pouvez ainsi activer dérive pour le modèle global, puis cliquez sur *appliquer*.
++
+Dérive permet à BlueXP de surveiller les valeurs codées en dur que vous avez saisies pour les paramètres lors de la création de ce modèle.
+
+. Cliquez sur *Enregistrer le modèle*.
+
+
+Le modèle est créé et vous êtes renvoyé au tableau de bord modèles où apparaît votre nouveau modèle.
+
+Voir  to do after you have created the template,ce que vous devez dire à vos utilisateurs sur les modèles.
+
+
+
+=== Créez un modèle pour un volume ONTAP sur site
+
+Voir https://docs.netapp.com/us-en/cloud-manager-ontap-onprem/task-provisioning-ontap.html#creating-volumes-for-ontap-clusters["Comment provisionner des volumes ONTAP sur site"^] Pour en savoir plus sur les paramètres à compléter dans le modèle de volume ONTAP sur site.
+
+.Étapes
+. Sélectionnez *Santé > correction*, cliquez sur l'onglet *modèles* et cliquez sur *Ajouter un nouveau modèle*.
++
+La page _Select_a Template_ s'affiche.
+
++
+image:screenshot_create_template_primary_action_blank.png["Capture d'écran indiquant comment sélectionner l'action principale qui sera exécutée à l'aide de ce modèle."]
+
+. Sélectionnez *modèle vierge* et cliquez sur *commencer*.
++
+La page _Ajouter une nouvelle action_ s'affiche.
+
++
+image:screenshot_create_template_primary_action_onprem.png["Capture d'écran indiquant comment sélectionner l'action principale à partir de la page Ajouter une nouvelle action."]
+
+. Sélectionnez *Créer un volume dans ONTAP* sur site comme type de ressource à créer, puis cliquez sur *appliquer*.
++
+La page _Create Volume in on-local ONTAP action Definition_ s'affiche.
+
++
+image:screenshot_create_template_define_action_onprem.png["Capture d'écran montrant un modèle ONTAP sur site vierge que vous devez remplir."]
+
+. *Nom de l'action* : si vous le souhaitez, entrez un nom d'action personnalisé au lieu de la valeur par défaut.
+. *Contexte:* Entrez le contexte de l'environnement de travail ONTAP sur site, si nécessaire.
++
+Lorsque les utilisateurs lancent le modèle à partir d'un environnement de travail existant, ces informations sont automatiquement renseignées.
+
++
+Lorsque les utilisateurs lancent le modèle à partir du tableau de bord modèles (pas dans un contexte d'environnement de travail), ils doivent sélectionner l'environnement de travail, le SVM et l'agrégat dans lequel le volume sera créé.
+
+. *Détails:* Entrez le nom et la taille du volume.
++
+[cols="25,75"]
+|===
+| Champ | Description 
+
+
+| Nom du volume | Cliquez dans le champ et sélectionnez l'une des 5 options. Vous pouvez laisser l'administrateur entrer un nom en sélectionnant *texte libre*, ou vous pouvez spécifier que le nom du volume doit avoir un préfixe ou un suffixe spécifique, qu'il _contient_ certains caractères, ou qu'il suit les règles d'une expression régulière (regex) que vous saisissez. Par exemple, vous pouvez indiquer que "db" est un préfixe, un suffixe ou un contenu requis ; il faut à l'utilisateur d'ajouter des noms de volume tels que "db_vol1", "vol1_db" ou "vol_db_1". 
+
+
+| Taille du volume | Vous pouvez spécifier une plage de valeurs autorisées ou une taille fixe. Cette valeur est en GB. Pour notre exemple, nous pouvons ajouter une valeur fixe *100*. 
+
+
+| Étiquettes | Saisissez une paire de noms et de valeurs pour une balise que vous souhaitez associer à ce volume. Par exemple, vous pouvez ajouter "centre de coûts" comme nom de balise et le code de centre de coûts "6655829" comme valeur. Vous pouvez associer plusieurs balises à un volume en ajoutant plusieurs paires de noms de balises et de valeurs. 
+|===
+. *Protection:* Choisissez si les copies Snapshot du volume seront créées en sélectionnant « par défaut » ou une autre règle, ou bien « aucune » si vous ne souhaitez pas créer de copies Snapshot.
+. *Profil d'utilisation :* Choisissez si les fonctionnalités d'efficacité du stockage NetApp sont appliquées ou non au volume. Cela inclut le provisionnement fin, la déduplication et la compression.
+. *Options de protocole:* sélectionnez *NFS* ou *SMB* pour définir le protocole du volume. Puis le fournit les détails du protocole.
++
+[cols="25,75"]
+|===
+| Champs NFS | Description 
+
+
+| Contrôle d'accès | Indiquez si des contrôles d'accès sont nécessaires pour accéder au volume. 
+
+
+| Export policy | Créez une export policy pour définir les clients dans le sous-réseau pouvant accéder au volume. 
+
+
+| Version NFS | Sélectionnez la version NFS du volume : _NFSv3_ ou _NFSv4_, ou sélectionnez les deux. 
+|===
++
+[cols="25,75"]
+|===
+| Champs SMB | Description 
+
+
+| Nom de partage | Cliquez dans le champ et sélectionnez l'une des 5 options. Vous pouvez laisser l'administrateur entrer n'importe quel nom (texte libre) ou vous pouvez spécifier que le nom du partage doit avoir un préfixe ou un suffixe spécifique, qu'il _contient_ certains caractères, ou qu'il suit les règles d'une expression régulière (regex) que vous saisissez. 
+
+
+| Autorisations | Sélectionnez le niveau d'accès à un partage pour les utilisateurs et les groupes (également appelés listes de contrôle d'accès ou listes de contrôle d'accès). 
+
+
+| Utilisateurs / groupes | Spécifiez les utilisateurs ou groupes Windows locaux ou de domaine, ou les utilisateurs ou groupes UNIX. Si vous spécifiez un nom d'utilisateur Windows de domaine, vous devez inclure le domaine de l'utilisateur à l'aide du format domaine\nom d'utilisateur. 
+|===
+. Cliquez sur *appliquer* après avoir défini les paramètres requis pour cette action.
++
+Si les valeurs du modèle sont correctement terminées, une coche verte est ajoutée à la case « Créer un volume dans ONTAP sur site ».
+
+. Entrez le nom du modèle dans le coin supérieur gauche.
+. Cliquez sur *Paramètres et dérive* pour fournir une description plus détaillée de sorte que ce modèle puisse être distingué d'autres modèles similaires, et vous pouvez ainsi activer dérive pour le modèle global, puis cliquez sur *appliquer*.
++
+Dérive permet à BlueXP de surveiller les valeurs codées en dur que vous avez saisies pour les paramètres lors de la création de ce modèle.
+
+. Cliquez sur *Enregistrer le modèle*.
+
+
+Le modèle est créé et vous êtes renvoyé au tableau de bord des modèles où apparaît votre nouveau modèle.
+
+Voir  to do after you have created the template,ce que vous devez dire à vos utilisateurs sur les modèles.
+
+
+
+=== Créez un modèle pour un environnement de travail Cloud Volumes ONTAP
+
+Vous pouvez créer un environnement de travail Cloud Volumes ONTAP à un seul nœud ou haute disponibilité à l'aide de modèles.
+
+[NOTE]
+====
+* Actuellement, ce support est exclusivement réservé aux environnements AWS.
+* Ce modèle ne crée pas le premier volume dans l'environnement de travail. Vous devez ajouter une action « Créer un volume dans Cloud Volumes ONTAP » dans le modèle pour créer le volume.
+
+
+====
+Voir https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-deploying-otc-aws.html#launching-a-single-node-cloud-volumes-ontap-system-in-aws["Comment lancer un système Cloud Volumes ONTAP à un seul nœud dans AWS"^] ou un https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-deploying-otc-aws.html#launching-a-cloud-volumes-ontap-ha-pair-in-aws["Paire HA Cloud Volumes ONTAP dans AWS"^] pour les prérequis qui doivent être en place et pour obtenir des détails sur tous les paramètres que vous devrez définir dans ce modèle.
+
+.Étapes
+. Sélectionnez *Santé > correction*, cliquez sur l'onglet *modèles* et cliquez sur *Ajouter un nouveau modèle*.
++
+La page _Select_a Template_ s'affiche.
+
++
+image:screenshot_create_template_primary_action_blank.png["Capture d'écran indiquant comment sélectionner l'action principale qui sera exécutée à l'aide de ce modèle."]
+
+. Sélectionnez *modèle vierge* et cliquez sur *commencer*.
++
+La page _Ajouter une nouvelle action_ s'affiche.
+
++
+image:screenshot_create_template_cvo_env_aws.png["Capture d'écran indiquant comment sélectionner l'action principale à partir de la page Ajouter une nouvelle action."]
+
+. Sélectionnez *Créer un environnement de travail dans AWS (nœud unique)* ou *Créer un environnement de travail dans AWS (haute disponibilité)* comme type de ressource à créer, puis cliquez sur *appliquer*.
++
+Pour cet exemple, la page _Create Working Environment in AWS (nœud unique)_ s'affiche.
+
++
+image:screenshot_create_template_cvo_env_aws1.png["Capture d'écran montrant un modèle d'environnement de travail Cloud Volumes ONTAP vierge à remplir."]
+
+. *Nom de l'action* : si vous le souhaitez, entrez un nom d'action personnalisé au lieu de la valeur par défaut.
+. *Détails et informations d'identification* : sélectionnez les informations d'identification AWS à utiliser, entrez un nom d'environnement de travail et ajoutez des balises, si nécessaire.
++
+Certains champs de cette page sont explicites. Le tableau suivant décrit les champs pour lesquels vous pouvez avoir besoin de conseils :
+
++
+[cols="25,75"]
+|===
+| Champ | Description 
+
+
+| Informations d'identification | Il s'agit des informations d'identification du compte d'administration du cluster Cloud Volumes ONTAP. Vous pouvez utiliser ces identifiants pour vous connecter à Cloud Volumes ONTAP via ONTAP System Manager ou son interface de ligne de commandes. 
+
+
+| Nom de l'environnement de travail | BlueXP utilise le nom de l'environnement de travail pour nommer à la fois le système Cloud Volumes ONTAP et l'instance Amazon EC2. Il utilise également le nom comme préfixe pour le groupe de sécurité prédéfini, si vous sélectionnez cette option. Cliquez dans le champ et sélectionnez l'une des 5 options. Vous pouvez laisser l'administrateur entrer n'importe quel nom en sélectionnant *texte libre*, ou vous pouvez spécifier que le nom de l'environnement de travail doit avoir un certain préfixe ou suffixe, qu'il _contient_ certains caractères, ou qu'il suit les règles d'une expression régulière (regex) que vous saisissez. 
+
+
+| Étiquettes | Les étiquettes AWS sont des métadonnées pour vos ressources AWS. BlueXP ajoute les balises à l'instance Cloud Volumes ONTAP et à chaque ressource AWS associée à l'instance. Pour plus d'informations sur les étiquettes, reportez-vous à la section https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html["Documentation AWS : balisage des ressources Amazon EC2"^]. 
+|===
+. *Localisation et connectivité* : saisissez les informations de réseau que vous avez enregistrées dans le https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-planning-your-config.html#aws-network-information-worksheet["Fiche AWS"^]. Il s'agit notamment de la région AWS, du VPC, du sous-réseau et du groupe de sécurité.
++
+Si vous disposez d'un poste externe AWS, vous pouvez déployer un système Cloud Volumes ONTAP à un seul nœud dans cet envoi en sélectionnant le VPC Outpost. L'expérience est la même que tout autre VPC qui réside dans AWS.
+
+. *Méthode d'authentification* : sélectionnez la méthode d'authentification SSH que vous souhaitez utiliser, soit un mot de passe, soit une paire de clés.
+. *Data Encryption* : choisissez pas de cryptage de données ou de cryptage géré par AWS.
++
+Pour le chiffrement géré par AWS, vous pouvez choisir une autre clé maître client (CMK) dans votre compte ou un autre compte AWS.
+
++
+https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-setting-up-kms.html["Découvrez comment configurer le KMS AWS pour Cloud Volumes ONTAP"^].
+
+. *Méthode de charge* : spécifiez l'option de charge que vous souhaitez utiliser avec ce système.
++
+https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/concept-licensing.html["Découvrez ces méthodes de charge"^].
+
+. *Compte sur le site de support NetApp* : sélectionnez un compte sur le site de support NetApp.
+. *Packages préconfigurés* : sélectionnez l'un des quatre packages préconfigurés qui déterminera plusieurs facteurs pour les volumes créés dans l'environnement de travail.
+. *Configuration SMB* : si vous prévoyez de déployer des volumes à l'aide de SMB dans cet environnement de travail, vous pouvez configurer un serveur CIFS et les éléments de configuration associés.
+. Cliquez sur *appliquer* après avoir défini les paramètres requis pour cette action.
++
+Si les valeurs du modèle sont correctement terminées, une coche verte est ajoutée à la case « Créer un environnement de travail dans AWS (nœud unique) ».
+
+. Vous pouvez ajouter une autre action dans ce modèle pour créer un volume pour cet environnement de travail. Si c'est le cas, cliquez sur image:button_plus_sign_round.png["bouton plus"] et ajoutez cette action. Découvrez comment  a template for a Cloud Volumes ONTAP volume,Créez un modèle pour un volume Cloud Volumes ONTAP pour plus d'informations.
+. Entrez le nom du modèle dans le coin supérieur gauche.
+. Cliquez sur *Paramètres et dérive* pour fournir une description plus détaillée de sorte que ce modèle puisse être distingué d'autres modèles similaires, et vous pouvez ainsi activer dérive pour le modèle global, puis cliquez sur *appliquer*.
++
+Dérive permet à BlueXP de surveiller les valeurs codées en dur que vous avez saisies pour les paramètres lors de la création de ce modèle.
+
+. Cliquez sur *Enregistrer le modèle*.
+
+
+Le modèle est créé et vous êtes renvoyé au tableau de bord des modèles où apparaît votre nouveau modèle.
+
+Voir  to do after you have created the template,ce que vous devez dire à vos utilisateurs sur les modèles.
+
+
+
+== Exemples de recherche de ressources existantes à l'aide de modèles
+
+À l'aide de l'action _Find Existing Resources_, vous pouvez trouver des environnements de travail spécifiques ou trouver des volumes existants en fournissant une variété de filtres afin que vous puissiez limiter votre recherche aux ressources qui vous intéressent. Une fois les ressources correctes trouvent, vous pouvez ajouter des volumes à un environnement de travail ou activer un service cloud sur les volumes résultants.
+
+
+NOTE: Pour l'instant, des volumes sont disponibles dans les systèmes Cloud Volumes ONTAP, ONTAP sur site et Azure NetApp Files. Vous pouvez également activer Cloud Backup sur Cloud Volumes ONTAP et sur les volumes ONTAP sur site. D'autres ressources et services seront disponibles ultérieurement.
+
+
+
+=== Rechercher des volumes existants et activer un service cloud
+
+La fonctionnalité actuelle _Find Existing Resources_ action vous permet d'identifier les volumes dans les environnements de travail ONTAP sur site et Cloud Volumes ONTAP qui n'ont pas encore de fonction Cloud Backup ou Cloud Data Sense. Lorsque vous activez Cloud Backup sur des volumes spécifiques, cette action définit également la règle de sauvegarde que vous avez configurée comme règle par défaut pour cet environnement de travail. Ainsi, tous les volumes futurs de ces environnements de travail peuvent utiliser la même stratégie de sauvegarde.
+
+.Étapes
+. Sélectionnez *Santé > correction*, cliquez sur l'onglet *modèles* et cliquez sur *Ajouter un nouveau modèle*.
++
+La page _Select_a Template_ s'affiche.
+
++
+image:screenshot_create_template_primary_action_blank.png["Capture d'écran indiquant comment sélectionner l'action principale qui sera exécutée à l'aide de ce modèle."]
+
+. Sélectionnez *modèle vierge* et cliquez sur *commencer*.
++
+La page _Ajouter une nouvelle action_ s'affiche.
+
++
+image:screenshot_create_template_find_resource_action.png["Capture d'écran indiquant comment sélectionner l'action Rechercher des ressources existantes dans la page Ajouter une nouvelle action."]
+
+. Sélectionnez *Rechercher les ressources existantes* comme type d'action à définir, puis cliquez sur *appliquer*.
++
+La page _Rechercher des ressources existantes action Definition_ s'affiche.
+
++
+image:screenshot_define_find_resource_action1.png["Capture d'écran indiquant un modèle de recherche de ressources existantes vierge que vous devez remplir."]
+
+. *Nom de l'action* : saisissez un nom d'action personnalisé au lieu de la valeur par défaut. Par exemple, « recherchez de grands volumes sur le cluster ABC et activez la sauvegarde ».
+. *Type de ressource :* sélectionnez le type de ressource que vous souhaitez trouver. Dans ce cas, vous pouvez sélectionner *volumes dans Cloud Volumes ONTAP*.
++
+Il s'agit de la seule entrée requise pour cette action. Cliquez sur *Continuer* maintenant et vous recevrez une liste de tous les volumes sur tous les systèmes Cloud Volumes ONTAP de votre environnement.
+
++
+Nous vous recommandons plutôt de compléter quelques filtres afin de réduire le nombre de résultats (dans ce cas, les volumes) pour lesquels vous appliquerez l'action Cloud Backup.
+
+. Dans la zone _context_, vous pouvez sélectionner un environnement de travail spécifique et d'autres détails sur cet environnement de travail.
++
+image:screenshot_define_find_resource_filter_context.png["Capture d'écran affichant les filtres de contexte que vous pouvez appliquer au modèle Rechercher des ressources existantes."]
+
+. Dans la zone _Details_, vous pouvez sélectionner le nom du volume, la plage de taille du volume et toutes les balises affectées aux volumes.
++
+Pour le nom du volume, cliquez dans le champ et sélectionnez l'une des 5 options. Vous pouvez laisser l'administrateur entrer un nom en sélectionnant *texte libre*, ou vous pouvez spécifier que le nom du volume doit avoir un préfixe ou un suffixe spécifique, qu'il _contient_ certains caractères, ou qu'il suit les règles d'une expression régulière (regex) que vous saisissez.
+
++
+Pour la taille de volume, vous pouvez spécifier une plage ; par exemple, tous les volumes entre 100 Gio et 500 Gio.
+
++
+Pour les balises, vous pouvez affiner davantage la recherche de sorte que les résultats n'affichent que les volumes avec certaines paires clé/valeur de balise.
+
++
+image:screenshot_define_find_resource_filter_details.png["Capture d'écran affichant les filtres Détails que vous pouvez appliquer au modèle Rechercher des ressources existantes."]
+
+. Cliquez sur *Continuer* et la page se met à jour pour afficher les critères de recherche que vous avez définis dans le modèle.
++
+image:screenshot_define_find_resource_search_criteria.png["Capture d'écran affichant les critères de recherche que vous avez définis pour le modèle Rechercher des ressources existantes."]
+
+. Cliquez sur *Tester vos critères de recherche maintenant* pour voir les résultats actuels.
++
+** Si les résultats ne correspondent pas à vos attentes, cliquez sur image:screenshot_edit_icon.gif["modifier l'icône du crayon"] À côté de _Search Criteria_ et affinez votre recherche plus loin.
+** Lorsque les résultats sont bons, cliquez sur *Done*.
++
+L'action _Find Existing Resources_ terminée s'affiche dans la fenêtre de l'éditeur.
+
+
+
+. Cliquez sur le signe plus pour ajouter une autre action, sélectionnez *Activer la sauvegarde dans le Cloud sur le volume*, puis cliquez sur *appliquer*.
++
+L'action _Activer la sauvegarde dans le Cloud sur le volume_ est ajoutée à la fenêtre.
+
++
+image:screenshot_template_add_backup_action.png["Capture d'écran indiquant les étapes à suivre pour ajouter une action Cloud Backup à votre modèle."]
+
+. Vous pouvez maintenant définir les critères de sauvegarde comme décrit dans  Backup functionality to a volume,Ajout de la fonctionnalité de sauvegarde à un volume De sorte que le modèle applique la stratégie de sauvegarde correcte aux volumes que vous sélectionnez à partir de l'action _Find Existing Resources_.
+. Cliquez sur *appliquer* pour enregistrer la personnalisation que vous avez effectuée dans l'action de sauvegarde, puis cliquez sur *Enregistrer le modèle* lorsque vous avez terminé.
+
+
+Le modèle est créé et vous êtes renvoyé au tableau de bord des modèles où apparaît votre nouveau modèle.
+
+Voir  to do after you have created the template,ce que vous devez dire à vos utilisateurs sur les modèles.
+
+
+
+=== Identifier les environnements de travail existants
+
+À l'aide de l'action _Find Existing Resources_, vous pouvez trouver l'environnement de travail, puis utiliser d'autres actions de modèle, telles que la création d'un volume, pour effectuer facilement des actions sur l'environnement de travail existant.
+
+.Étapes
+. Sélectionnez *Santé > correction*, cliquez sur l'onglet *modèles* et cliquez sur *Ajouter un nouveau modèle*.
++
+La page _Select_a Template_ s'affiche.
+
++
+image:screenshot_create_template_primary_action_blank.png["Capture d'écran indiquant comment sélectionner l'action principale qui sera exécutée à l'aide de ce modèle."]
+
+. Sélectionnez *modèle vierge* et cliquez sur *commencer*.
++
+La page _Ajouter une nouvelle action_ s'affiche.
+
++
+image:screenshot_create_template_find_resource_action.png["Capture d'écran indiquant comment sélectionner l'action Rechercher des ressources existantes dans la page Ajouter une nouvelle action."]
+
+. Sélectionnez *Rechercher les ressources existantes* comme type d'action à définir, puis cliquez sur *appliquer*.
++
+La page _Rechercher des ressources existantes action Definition_ s'affiche.
+
++
+image:screenshot_define_find_work_env.png["Capture d'écran indiquant un modèle de recherche de ressources existantes vierge que vous devez remplir."]
+
+. *Nom de l'action* : saisissez un nom d'action personnalisé au lieu de la valeur par défaut. Par exemple, « trouver des environnements de travail qui incluent Dallas ».
+. *Type de ressource :* sélectionnez le type de ressource que vous souhaitez trouver. Dans ce cas, vous sélectionnez *environnements de travail*.
++
+Il s'agit de la seule entrée requise pour cette action. Vous pouvez cliquer sur *Continuer* maintenant et vous recevrez une liste de tous les environnements de travail de votre environnement.
+
++
+Il est recommandé de remplir quelques filtres afin de réduire le nombre de résultats (dans ce cas, les environnements de travail).
+
+. Après avoir défini quelques filtres dans la zone _Details_, vous pouvez sélectionner un environnement de travail spécifique.
+. Cliquez sur *Continuer* pour enregistrer vos paramètres, puis cliquez sur *terminé*.
+. Entrez le nom du modèle dans le coin supérieur gauche, puis cliquez sur *Enregistrer le modèle*
+
+
+Le modèle est créé et vous êtes renvoyé au tableau de bord des modèles où apparaît votre nouveau modèle.
+
+Voir  to do after you have created the template,ce que vous devez dire à vos utilisateurs sur les modèles.
+
+
+
+== Exemples d'activation de services à l'aide de modèles
+
+Les modèles de service vous permettent d'activer les services Cloud Backup, Cloud Data Sense ou Replication (SnapMirror) sur un nouveau volume.
+
+
+
+=== Ajouter la fonctionnalité de sauvegarde à un volume
+
+Lors de la création d'un modèle de volume, vous pouvez ajouter le modèle que vous souhaitez créer régulièrement des sauvegardes du volume à l'aide de https://docs.netapp.com/us-en/cloud-manager-backup-restore/concept-backup-to-cloud.html["La sauvegarde dans le cloud"^] services.
+
+
+TIP: Cette action ne s'applique pas aux volumes Azure NetApp Files.
+
+image:screenshot_template_backup.png["Capture d'écran de la page pour activer la fonctionnalité de sauvegarde de vos volumes."]
+
+. *Stratégie* : sélectionnez la stratégie de sauvegarde que vous souhaitez utiliser.
+. *Context* : par défaut, les variables sont remplies pour l'environnement de travail, la machine virtuelle de stockage et le volume pour indiquer que vous allez créer des sauvegardes pour le volume créé précédemment dans ce même modèle. Donc, si c'est ce que vous voulez faire, vous êtes tous ensemble.
++
+Si vous souhaitez créer des sauvegardes pour un autre volume, vous pouvez entrer ces informations manuellement. Découvrez comment link:reference-template-building-blocks.html#pass-values-between-template-actions["Renseignez les champs de contexte"] pour indiquer un autre volume.
+
+. Cliquez sur *appliquer* pour enregistrer vos modifications.
+
+
+
+
+=== Ajouter une fonctionnalité de détection des données à un volume
+
+Lors de la création d'un modèle de volume, vous pouvez ajouter le modèle que vous voulez analyser le volume pour vérifier la conformité et la classification à l'aide du https://docs.netapp.com/us-en/cloud-manager-data-sense/concept-cloud-compliance.html["Sens des données cloud"^] services.
+
+image:screenshot_template_data_sense.png["Capture d'écran de la page pour activer la fonctionnalité de numérisation de vos volumes."]
+
+. *Context*: Par défaut, les variables sont remplies pour l'environnement de travail, le nom du volume, l'UUID du volume, le chemin du volume et le protocole pour indiquer que vous allez analyser les données pour le volume créé précédemment dans ce même modèle. Donc, si c'est ce que vous voulez faire, vous êtes tous ensemble.
++
+Si vous souhaitez analyser des données pour un autre volume, vous pouvez saisir ces informations manuellement. Découvrez comment link:reference-template-building-blocks.html#pass-values-between-template-actions["Renseignez les champs de contexte"] pour indiquer un autre volume.
+
+. Cliquez sur *appliquer* pour enregistrer vos modifications.
+
+
+
+
+=== Ajouter la fonctionnalité de réplication à un volume
+
+Lors de la création d'un modèle de volume, vous pouvez ajouter le modèle de réplication des données du volume vers un autre volume à l'aide de l' https://docs.netapp.com/us-en/cloud-manager-replication/concept-replication.html["La réplication"^] services. Vous pouvez répliquer des données vers un cluster Cloud Volumes ONTAP ou vers un cluster ONTAP sur site.
+
+
+TIP: Cette action ne s'applique pas aux volumes Azure NetApp Files.
+
+La fonction de réplication se compose de trois parties : la sélection du volume source, la sélection du volume de destination et la définition des paramètres de réplication. Chaque section est décrite ci-dessous.
+
+. *Détails de la source* : saisissez les détails du volume source que vous souhaitez répliquer :
++
+image:screenshot_template_replication_source.png["Capture d'écran de la page pour définir l'emplacement du volume source de réplication."]
+
++
+.. Par défaut, les trois premières variables sont remplies pour l'environnement de travail, la machine virtuelle de stockage et le volume afin de indiquer que vous allez répliquer le volume créé précédemment dans ce même modèle. Donc, si c'est ce que vous voulez faire, vous êtes tous ensemble.
++
+Si vous souhaitez répliquer un autre volume, vous pouvez saisir ces informations manuellement. Découvrez comment link:reference-template-building-blocks.html#pass-values-between-template-actions["Renseignez les champs de contexte"] pour indiquer un autre volume.
+
+.. La réplication nécessite que les environnements de travail source et destination soient connectés via leurs LIFs intercluster. Entrer l'adresse IP LIF intercluster pour l'environnement de travail source.
++
+Pour obtenir ces informations : double-cliquez sur l'environnement de travail, cliquez sur l'icône du menu, puis cliquez sur informations.
+
+
+
+. *Détails de destination* : saisissez les détails du volume de destination qui sera créé par l'opération de réplication :
++
+image:screenshot_template_replication_dest.png["Capture d'écran de la page pour définir l'emplacement du volume de destination de réplication."]
+
++
+.. Sélectionnez l'environnement de travail dans lequel le volume sera créé.
+.. Sélectionnez la VM de stockage sur laquelle le volume sera stocké.
+.. Lors de la réplication d'un volume vers un cluster Cloud Volumes ONTAP (pas vers un cluster ONTAP sur site), vous devez spécifier le fournisseur de destination (AWS, Azure ou GCP).
+.. Lors de la réplication d'un volume sur un cluster Cloud Volumes ONTAP, vous pouvez spécifier si le Tiering des volumes est activé sur le volume de destination.
+.. Pour le nom du volume de destination, cliquez dans le champ et sélectionnez l'une des 5 options. Vous pouvez laisser l'administrateur entrer un nom en sélectionnant *texte libre*, ou vous pouvez spécifier que le nom du volume doit avoir un préfixe ou un suffixe spécifique, qu'il _contient_ certains caractères, ou qu'il suit les règles d'une expression régulière (regex) que vous saisissez.
+.. La réplication nécessite que les environnements de travail source et destination soient connectés via leurs LIFs intercluster. Entrer l'adresse IP LIF intercluster pour l'environnement de travail de destination.
+.. Sélectionnez l'agrégat sur lequel le volume va résider.
+.. Lors de la réplication d'un volume dans un cluster Cloud Volumes ONTAP (pas vers un cluster ONTAP sur site), vous devez spécifier le type de disque à utiliser pour le nouveau volume.
+
+
+. *Détails de la réplication* : saisissez les détails sur le type et la fréquence de l'opération de réplication :
++
+image:screenshot_template_replication_policy.png["Capture d'écran de la page pour définir les paramètres de réplication de la relation."]
+
++
+.. Sélectionner https://docs.netapp.com/us-en/cloud-manager-replication/concept-replication-policies.html#types-of-replication-policies["règle de réplication"^] que vous voulez utiliser.
+.. Choisissez une copie unique ou une planification de réplication récurrente.
+.. Activez la surveillance de l'état de la réplication si vous souhaitez que le rapport de dérive inclut l'intégrité de la réplication de la relation SnapMirror ainsi que l'heure de décalage, l'état et l'heure du dernier transfert. link:task-check-template-compliance.html#replication-health-details-in-the-drift-report["Voyez ce que cela ressemble dans le rapport de dérive"].
+.. Indiquez si vous souhaitez définir une limite de taux de transfert, puis saisissez le taux maximal (en kilo-octets par seconde) auquel les données peuvent être transférées. Vous pouvez entrer une valeur fixe ou fournir un minimum et un maximum et laisser l'administrateur du stockage sélectionner une valeur dans cette plage.
+
+
+. Cliquez sur *appliquer* pour enregistrer vos modifications.
+
+
+
+
+== Que faire après avoir créé le modèle
+
+Une fois le modèle créé, informez vos administrateurs du stockage qu'ils peuvent utiliser lors de la création de nouveaux volumes et environnements de travail.
+
+Vous pouvez les orienter vers link:task-run-templates.html["Création de ressources à l'aide de modèles"] pour plus d'informations.
+
+
+
+== Modifier ou supprimer un modèle
+
+Vous pouvez modifier un modèle si vous devez modifier l'un des paramètres. Après avoir enregistré vos modifications, toutes les ressources futures créées à partir du modèle utiliseront les nouvelles valeurs de paramètres.
+
+Vous pouvez également supprimer un modèle si vous n'en avez plus besoin. La suppression d'un modèle n'affecte aucune des ressources créées avec le modèle. Toutefois, aucune vérification de conformité à la dérive ne peut être effectuée après la suppression du modèle.
+
+image:screenshot_template_edit_remove.png["Capture d'écran indiquant comment modifier un modèle ou supprimer un modèle."]
+
+
+
+== Faites une copie d'un modèle
+
+Vous pouvez créer une copie d'un modèle existant. Cela peut vous faire gagner beaucoup de temps si vous souhaitez créer un nouveau modèle très similaire à un modèle existant. Il vous suffit de faire le doublon avec un nouveau nom, puis vous pouvez modifier le modèle pour modifier les deux éléments qui rendent le modèle unique.
+
+image:screenshot_template_duplicate.png["Capture d'écran indiquant comment dupliquer un modèle."]

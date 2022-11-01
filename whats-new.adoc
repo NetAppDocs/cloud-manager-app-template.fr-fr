@@ -1,0 +1,171 @@
+---
+sidebar: sidebar 
+permalink: whats-new.html 
+keywords: 'what"s new, features, new, release notes, bugs, limitations, known issues, enhancements, fixes' 
+summary: 'Découvrez les nouveautés d"AppTemplate et du balisage.' 
+---
+= Nouveautés d'AppTemplate et du balisage
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Découvrez les nouveautés d'AppTemplate et du balisage.
+
+
+
+== 3 mars 2022
+
+
+
+=== Vous pouvez désormais créer un modèle pour trouver des environnements de travail spécifiques
+
+À l'aide de l'action « Rechercher les ressources existantes », vous pouvez identifier l'environnement de travail, puis utiliser d'autres actions de modèle, telles que la création d'un volume, pour effectuer facilement des actions sur les environnements de travail existants. https://docs.netapp.com/us-en/cloud-manager-app-template/task-define-templates.html#examples-of-finding-existing-resources-and-enabling-services-using-templates["Cliquez ici pour plus d'informations"].
+
+
+
+=== Possibilité de créer un environnement de travail Cloud Volumes ONTAP HA dans AWS
+
+La création d'un environnement de travail Cloud Volumes ONTAP dans AWS a été étendue pour inclure la création d'un système haute disponibilité en plus d'un système à un seul nœud. https://docs.netapp.com/us-en/cloud-manager-app-template/task-define-templates.html#create-a-template-for-a-cloud-volumes-ontap-working-environment["Découvrez comment créer un modèle pour un environnement de travail Cloud Volumes ONTAP"].
+
+
+
+== 9 février 2022
+
+
+
+=== Vous pouvez à présent créer un modèle pour rechercher des volumes spécifiques existants, puis activer Cloud Backup
+
+En utilisant la nouvelle action « trouver une ressource », vous pouvez identifier tous les volumes sur lesquels vous souhaitez activer Cloud Backup, puis exécuter l'action Cloud Backup pour activer la sauvegarde sur ces volumes.
+
+Prise en charge actuelle pour les volumes sur les systèmes Cloud Volumes ONTAP et ONTAP sur site https://docs.netapp.com/us-en/cloud-manager-app-template/task-define-templates.html#find-existing-volumes-and-activate-cloud-backup["Cliquez ici pour plus d'informations"].
+
+
+
+== 31 octobre 2021
+
+
+
+=== Vous pouvez désormais marquer vos relations de synchronisation afin de pouvoir les regrouper ou les catégoriser pour en faciliter l'accès
+
+https://docs.netapp.com/us-en/cloud-manager-app-template/concept-tagging.html["En savoir plus sur le balisage des ressources"].
+
+
+
+== 11 octobre 2021
+
+
+
+=== Vous pouvez maintenant créer un doublon d'un modèle existant
+
+La création d'un doublon peut vous faire gagner beaucoup de temps si vous souhaitez créer un nouveau modèle très similaire à un modèle existant. Il vous suffit de faire le doublon avec un nouveau nom et de changer les éléments qui rendent le modèle unique. link:task-define-templates.html#make-a-copy-of-a-template["Voir comment créer une copie d'un modèle"].
+
+
+
+=== L'activation des services sur les volumes créés avec les modèles est beaucoup plus simple
+
+Avant de sélectionner les variables afin d'identifier l'environnement de travail, la machine virtuelle de stockage et le nom du volume. Le modèle vous ajoute maintenant ces informations. Vous pouvez ainsi ajouter des services pour Cloud Backup, Cloud Compliance et la réplication à de nouveaux volumes.
+
+
+
+=== Le support a été ajouté afin de pouvoir étiqueter certaines ressources GCP
+
+Vous pouvez désormais gérer les étiquettes de vos ressources GCP à l'aide du service Cloud Manager Tagging. Vous pouvez afficher les étiquettes et les valeurs d'étiquette GCP appliquées aux ressources et les appliquer à d'autres ressources GCP que vous gérez. link:concept-tagging.html#resources-that-you-can-tag["Consultez les ressources GCP que vous pouvez étiqueter"].
+
+
+
+== 2 septembre 2021
+
+
+
+=== Vous pouvez désormais gérer les balises de vos ressources Azure à l'aide du service de balisage
+
+Vous pouvez afficher les balises Azure et les valeurs de balise qui ont été appliquées aux ressources et les appliquer à d'autres ressources Azure que vous gérez. link:concept-tagging.html#resources-that-you-can-tag["Consultez les ressources Azure que vous pouvez marquer"].
+
+
+
+=== Certaines ressources EC2 AWS supplémentaires peuvent à présent être balisées
+
+
+
+== 8 août 2021
+
+
+
+=== Vous pouvez désormais créer un environnement de travail Cloud Volumes ONTAP à l'aide de modèles
+
+Cette prise en charge n'est disponible que pour les environnements AWS à l'heure actuelle, et uniquement pour les clusters à un seul nœud. Découvrez comment link:task-define-templates.html#create-a-template-for-a-cloud-volumes-ontap-working-environment["Créez un modèle pour un environnement de travail Cloud Volumes ONTAP"].
+
+
+
+=== Une nouvelle fonctionnalité vous permet d'ajouter des balises à un volume dans un modèle de volume
+
+Le balisage vous permet de regrouper différentes ressources pour identifier des applications, des régions ou des services afin d'automatiser ou d'allouer des coûts à certains départements ou régions.
+
+
+
+=== Vous pouvez désormais gérer les balises de vos instances AWS EC2 dans Cloud Manager
+
+Vous pouvez afficher les balises AWS et les valeurs de balise qui ont été appliquées aux instances EC2, et les appliquer à d'autres instances EC2 que vous gérez. link:concept-tagging.html["En savoir plus sur le balisage"].
+
+
+
+== 13 juillet 2021
+
+
+
+=== Une prise en charge a été ajoutée pour utiliser le service de réplication lors de la définition d'un modèle
+
+Vous pouvez maintenant ajouter le modèle que vous voulez link:task-define-templates.html#add-replication-functionality-to-a-volume["répliquer les données dans le volume que vous créez"] sur un autre volume à l'aide du https://docs.netapp.com/us-en/cloud-manager-replication/concept-replication.html["Service de réplication"].
+
+En répliquant vos données sur d'autres systèmes de stockage NetApp, puis en les mettant régulièrement à jour, vous disposez de données actualisées et accessibles dès que vous en avez besoin.
+
+
+
+=== Téléchargez un rapport qui inclut tous les volumes ayant « dérivé » des paramètres de votre modèle
+
+Vous pouvez ainsi identifier ces volumes et affecter quelqu'un pour rétablir la conformité des volumes. Voir link:task-check-template-compliance.html#create-a-drift-report-for-non-compliant-resources["comment télécharger votre rapport de dérive"].
+
+
+
+=== Nouveau service d'étiquetage publié
+
+Une nouvelle fonctionnalité de Cloud Manager vous permet d'appliquer des balises à vos ressources ONTAP existantes pour mieux organiser et gérer ces ressources. Les balises sont des métadonnées que vous pouvez utiliser pour regrouper les ressources et identifier les applications, les environnements, les régions, les codes de facturation, les fournisseurs cloud, entre autres.
+
+link:concept-tagging.html["En savoir plus sur le balisage"].
+
+
+
+== 7 juin 2021
+
+
+
+=== Vous pouvez désormais activer certaines actions de manière conditionnelle lorsque l'utilisateur exécute le modèle
+
+Par exemple, si un volume Cloud Volumes ONTAP est créé avec l'efficacité du stockage NetApp activée, Cloud Backup est également activé sur ce volume. Si l'efficacité du stockage n'est pas activée, Cloud Backup n'est pas activé.
+
+
+
+=== Vous pouvez maintenant créer un volume sur un système ONTAP sur site à l'aide de modèles
+
+AppTemplate permet de créer un volume sur un environnement de travail existant à l'aide de modèles.
+
+
+
+=== Une nouvelle fonctionnalité appelée « dérive » a été ajoutée en tant qu'option lors de la création de vos modèles
+
+Cette fonctionnalité permet à Cloud Manager de surveiller les valeurs codées papier que vous avez saisies pour un paramètre dans un modèle. Un administrateur du stockage a créé un volume à l'aide de ce modèle. Si Cloud Manager constate par la suite que la valeur du paramètre a été modifiée afin qu'elle ne s'aligne plus sur la définition du modèle, vous pouvez voir tous les volumes qui ont « dérivé » du modèle conçu. Vous pouvez ainsi identifier ces volumes et les modifier pour assurer la conformité.
+
+
+
+== 2 mai 2021
+
+
+
+=== Vous pouvez désormais intégrer Cloud Data Sense lors de la création d'un modèle de volume
+
+Vous pouvez maintenant activer Data Sense pour chaque nouveau volume créé, ou activer Cloud Backup pour chaque nouveau volume créé... ou créer un modèle permettant à la fois la sauvegarde et la conformité pour le volume créé.

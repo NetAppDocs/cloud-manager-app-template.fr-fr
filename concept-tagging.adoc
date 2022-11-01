@@ -1,0 +1,182 @@
+---
+sidebar: sidebar 
+permalink: concept-tagging.html 
+keywords: tags, overview, conceptual, resource tags, volume tags, AWS tags, Azure tags 
+summary: 'BlueXP vous permet d"appliquer des balises à vos ressources _existantes_ afin de faciliter l"organisation et la gestion de ces ressources. Les balises sont des métadonnées que vous pouvez utiliser pour regrouper les ressources et identifier les applications, les environnements, les régions, les codes de facturation, les fournisseurs cloud, entre autres.' 
+---
+= En savoir plus sur le balisage
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+BlueXP (anciennement Cloud Manager) vous permet d'appliquer des balises à vos _ressources_ existantes pour vous aider à organiser et à gérer ces ressources. Les balises sont des métadonnées que vous pouvez utiliser pour regrouper les ressources et identifier les applications, les environnements, les régions, les codes de facturation, les fournisseurs cloud, entre autres.
+
+Les balises se composent d'une clé *tag* et d'une valeur *tag*. Par exemple, vous pouvez créer une clé de balise appelée « Environnement », puis ajouter des valeurs de balise « production » et « Test ». Une fois qu'elles sont appliquées à vos ressources, vous pouvez rapidement rechercher et afficher des ressources correspondant à la paire clé/valeur.
+
+Vous pouvez ajouter des paires clé/valeur de balise à _New_ resources lorsque vous créez un environnement de travail ou un volume Azure NetApp Files. Vous pouvez également définir des paires clé/valeur de balise dans link:task-define-templates.html["Modèles BlueXP que vous créez"] Pour les administrateurs du stockage et les ingénieurs DevOps.
+
+Vous pouvez ajouter de nouvelles balises à l'aide du service de balisage, et vous pouvez modifier ou supprimer des balises existantes.
+
+
+
+== Caractéristiques
+
+Le service d'étiquetage offre les fonctionnalités et avantages suivants :
+
+* Créez des clés de balise et des valeurs de balise correspondant aux termes que vous utilisez dans votre environnement
+* Organisez les ressources de votre environnement pour une surveillance et une gestion plus faciles
+* Ajouter, supprimer et modifier des clés de balise et des valeurs de balise par type de ressource
+* Marquez les ressources et les ressources ONTAP dans votre environnement à partir d'AWS et d'Azure.
+
+
+
+
+== Prix et licences
+
+La possibilité de marquer vos ressources ne nécessite aucune licence et est libre d'être utilisée par tous les utilisateurs BlueXP avec le rôle Administrateur de compte ou Administrateur d'espace de travail.
+
+
+
+== Ressources que vous pouvez marquer
+
+Vous pouvez appliquer des balises aux ressources suivantes.
+
+[cols="30,35,35"]
+|===
+| Fournisseur | Service | Ressource 
+
+
+.3+| ONTAP | Cloud Volumes ONTAP | Volume de stockage de machine virtuelle agrégé 
+
+
+| ONTAP sur site | Volume de stockage de machine virtuelle agrégé 
+
+
+| Azure NetApp Files | Volumétrie 
+
+
+| Services NetApp | Synchrone | Relations 
+
+
+| AWS | EC2 | Volume de sous-réseau VPC du groupe de sécurité de l'instance 
+
+
+.4+| Azure | Calcul | Machine virtuelle Snapshot 
+
+
+| Le réseau | Réseau virtuel du groupe de sécurité 
+
+
+| Ressource | Groupe de ressources 
+
+
+| Stockage | Compte de stockage 
+
+
+.2+| GCP | Calcul | Fréquence 
+
+
+| Stockage | Godet 
+|===
+Pour plus d'informations sur les balises AWS EC2, reportez-vous à https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html["Documentation AWS : balisage des ressources Amazon EC2"^].
+
+Pour plus d'informations sur les balises Azure, reportez-vous à la section https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources?tabs=json["Documentation Azure : balisage des ressources Azure"^].
+
+Pour plus d'informations sur les étiquettes Google, reportez-vous à la section https://cloud.google.com/compute/docs/labeling-resources["Documentation Google Cloud : balisage des ressources Google Cloud"^].
+
+
+
+== Prérequis
+
+
+
+=== Vérifiez vos autorisations AWS Connector
+
+Si vous avez créé le connecteur à l'aide de BlueXP version 3.9.10 ou ultérieure, vous êtes tous définis. Si vous avez créé le connecteur à l'aide d'une version antérieure de BlueXP, vous devrez ajouter certaines autorisations requises pour le rôle BlueXP IAM pour marquer les instances AWS EC2 :
+
+[source, json]
+----
+{
+  "Action": [
+    "ec2:CreateTags",
+    "ec2:DeleteTags",
+    "ec2:DescribeTags",
+    "tag:getResources",
+    "tag:getTagKeys",
+    "tag:getTagValues",
+    "tag:TagResources",
+    "tag:UntagResources"
+  ],
+  "Resource": "*",
+  "Effect": "Allow",
+  "Sid": "tagServicePolicy"
+}
+----
+
+
+=== Vérifiez vos autorisations Azure Connector
+
+Si vous avez créé le connecteur à l'aide de BlueXP version 3.9.10 ou ultérieure, vous êtes tous définis. Si vous avez créé le connecteur à l'aide d'une version antérieure de BlueXP, vous devrez ajouter certaines autorisations requises pour le rôle de l'opérateur IAM BlueXP pour identifier les ressources Azure :
+
+[source, json]
+----
+{
+  "id": "<ID>",
+  "properties": {
+    "roleName": "Cloud Manager Operator-<ID>",
+    "description": "Cloud Manager Operator",
+    "assignableScopes": [
+      "/subscriptions/<SUBSCRIPTION-ID>"
+    ],
+    "permissions": [
+      {
+        "actions": [
+          "Microsoft.Resources/tags/read",
+          "Microsoft.Resources/tags/write",
+          "Microsoft.Resources/tags/delete",
+          "Microsoft.ClassicCompute/virtualMachines/read"
+        ],
+        "notActions": [],
+        "dataActions": [],
+        "notDataActions": []
+      }
+    ]
+  }
+}
+----
+
+
+== Marquez des règles et des restrictions
+
+Les règles suivantes s'appliquent lors de la création de clés de balise et de valeurs de balise :
+
+* Longueur de clé maximale : 128 caractères
+* Longueur maximale de la valeur de clé : 256 caractères
+* Caractères de balise et de valeur de balise valides : lettres, chiffres, espaces et caractères spéciaux (_, @, &, *, etc.)
+* Les étiquettes sont sensibles à la casse.
+* Nombre maximum d'étiquettes par ressource : 30
+* Par ressource, chaque clé de balise doit être unique
+
+
+
+
+=== Exemples d'étiquettes
+
+[cols="50,50"]
+|===
+| Clé | Valeurs 
+
+
+| Env | test de production 
+
+
+| Service | ventes financières eng 
+
+
+| Propriétaire | stockage administratif 
+|===

@@ -1,0 +1,96 @@
+---
+sidebar: sidebar 
+permalink: task-check-template-compliance.html 
+keywords: templates, resource templates, application templates, volume templates, drift, compliant 
+summary: 'BlueXP peut surveiller les valeurs des paramètres utilisées lors de la création d"une ressource avec un modèle à l"aide de la fonction « dérive ». Dérive identifie les ressources qui ont été modifiées et qui ne sont plus conformes aux paramètres du modèle.' 
+---
+= Vérifier les ressources pour la conformité des modèles
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+BlueXP peut surveiller les valeurs des paramètres utilisées lors de la création d'une ressource avec un modèle à l'aide de la fonction « dérive ». Dérive identifie les ressources qui ont été modifiées et qui ne sont plus conformes aux paramètres du modèle.
+
+A ce stade, dérive identifie les paramètres modifiés dans une ressource -- vous devez effectuer manuellement des ajustements sur la ressource pour la remettre en conformité avec le modèle. À l'avenir, nous pourrons vous envoyer des notifications en cas de non-conformité d'une ressource, voire annuler les modifications d'un utilisateur afin que toutes les ressources créées à partir d'un modèle soient automatiquement mises en conformité.
+
+
+
+== Comment fonctionne la dérive
+
+Dérive identifie les paramètres non conformes comme suit :
+
+. Lors de la création d'un modèle, vous activez la dérive pour certains paramètres que vous ne souhaitez pas que les utilisateurs changent. Par exemple, il peut être nécessaire que les copies Snapshot soient créées à l'aide de la règle par défaut pour tous les volumes créés à partir d'un modèle.
++
+image:screenshot_template_drift_on_param.png["Capture d'écran montrant comment activer la dérive sur un seul paramètre d'un modèle."]
+
+. Vous activez la dérive pour le modèle, puis enregistrez le modèle.
++
+image:screenshot_template_drift_on_template.png["Capture d'écran indiquant comment activer la dérive pour le modèle."]
+
+. Les administrateurs du stockage exécutent le modèle pour créer des volumes.
+. Par la suite, un administrateur du stockage modifie un volume et désactive les copies Snapshot.
+. Vous exécutez la vérification de dérive sur tous les modèles et le service AppTemplates compare le paramètre du modèle de copies Snapshot au paramètre actuel du volume. Toutes les valeurs non conformes sont signalées pour vous permettre de corriger le paramètre incorrect.
+
+
+
+
+== Le tableau de bord dérive
+
+Le tableau de bord de dérive affiche le nombre total de ressources (par exemple, les volumes) créées à l'aide de vos modèles, le nombre qui est toujours conforme au modèle, le numéro qui n'est pas conforme (dérivé) et le numéro qui a été créé avec la fonction dérive désactivée.
+
+image:screenshot_template_drift_dashboard.png["Capture d'écran du tableau de bord de dérive pour le service AppTemplates."]
+
+* Les commandes situées en haut de chaque colonne vous permettent de trier les résultats par ordre numérique ou alphabétique.
+* Le image:screenshot_plus_icon.gif[""] Vous permet de filtrer les résultats par nom de modèle, stratégie d'dérive et état et type d'action. Par exemple :
++
+image:screenshot_template_filter_drift_status.png["Capture d'écran montrant comment utiliser le widget de filtre pour affiner la liste des ressources."]
+
+* La barre de recherche vous permet de rechercher un nom de volume ou de modèle spécifique.
+* Pour en savoir plus sur la ressource réelle (ou le volume), telle que l'environnement de travail et la VM de stockage, cliquez sur le bouton image:screenshot_sync_status_icon.gif[""].
++
+image:screenshot_template_drift_vol_details.png["Capture d'écran présentant les détails d'un volume dans le tableau de bord de dérive."]
+
+
+
+
+
+== Remplissez le tableau de bord de dérive
+
+Vous devez exécuter une vérification de dérive sur un modèle avant qu'il ne renseigne les valeurs dans le tableau de bord de dérive.
+
+Vous pouvez exécuter la vérification de dérive pour tous les modèles à partir du Tableau de bord modèles :
+
+image:screenshot_template_drift_for_all.png["Capture d'écran montrant comment exécuter la vérification de dérive pour tous les modèles."]
+
+Vous pouvez exécuter la vérification de dérive sur un seul modèle à partir du Tableau de bord modèles :
+
+image:screenshot_template_drift_for_one.png["Capture d'écran montrant comment exécuter la vérification de dérive pour un seul modèle."]
+
+
+
+== Créez un rapport de dérive pour les ressources non conformes
+
+Vous pouvez afficher un rapport de dérive pour une seule ressource ou exécuter un rapport pour télécharger un rapport pour toutes les ressources. Ce rapport vous permet d'affecter des actions aux administrateurs système pour apporter des modifications qui rendent les ressources conformes au modèle.
+
+Vous pouvez cliquer sur l'icône dérive d'une ressource dans le tableau de bord de dérive pour afficher la liste des paramètres de chaque ressource non conforme.
+
+image:screenshot_template_drift_report_one_resource.png["Capture d'écran d'un rapport de dérive pour une seule ressource."]
+
+Pour afficher un rapport de dérive pour les ressources créées à partir de vos modèles, cliquez sur image:button_download.png[""] Pour télécharger un fichier .CSV. Le rapport dérive reflète ce qui est actuellement filtré sur la page - il n'affiche pas toutes les ressources sauf si vous n'avez pas appliqué de filtres sur la page.
+
+
+
+=== Détails sur l'intégrité de la réplication dans le rapport de dérive
+
+Quand link:task-define-templates.html#add-replication-functionality-to-a-volume["Activation de la réplication sur un volume à l'aide de modèles"], Vous pouvez choisir d'afficher des informations de réplication plus détaillées dans le rapport de dérive en activant la dérive dans le champ « Activer la surveillance de l'intégrité de la réplication ». Lorsque cette option est activée, le rapport indique si l'état de santé de la relation de réplication est sain ou non (dérivé), avec la durée du décalage SnapMirror, l'état et la durée du dernier transfert.
+
+Cette capture d'écran montre les détails de réplication d'une relation SnapMirror qui n'est pas intègre dans le rapport de dérive.
+
+image:screenshot_template_drift_snapmirror_details.png["Capture d'écran du rapport Drift affichant les détails de réplication d'une relation SnapMirror défectueuse."]
+
+*Note:* comme la réplication est initialement appliquée au volume, la santé sera renvoyée comme "Faux", ce qui signifie qu'elle est malsaine. Au bout de quelques minutes, l'état de la réplication réelle s'affiche.

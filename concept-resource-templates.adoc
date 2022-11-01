@@ -1,0 +1,101 @@
+---
+sidebar: sidebar 
+permalink: concept-resource-templates.html 
+keywords: templates, overview, conceptual, resource templates, application templates, volume templates 
+summary: 'Le service AppTemplate vous permet de standardiser la création de ressources dans vos environnements de travail dans BlueXP. Par exemple, vous pouvez saisir les paramètres de code physique requis dans un « modèle de volume » qui sera appliqué ultérieurement lorsqu"un administrateur de stockage crée un volume à l"aide du modèle. Cela peut inclure le type, la taille, le protocole, la politique Snapshot, le fournisseur cloud, entre autres. Vous pouvez également activer certains services, comme Cloud Backup, pour chaque volume créé.' 
+---
+= En savoir plus sur AppTemplate
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Le service AppTemplate vous permet de standardiser la création de ressources dans vos environnements de travail dans BlueXP (anciennement Cloud Manager). Par exemple, vous pouvez saisir les paramètres de code physique requis dans un « modèle de volume » qui sera appliqué ultérieurement lorsqu'un administrateur de stockage crée un volume à l'aide du modèle. Cela peut inclure le type, la taille, le protocole, la politique Snapshot, le fournisseur cloud, entre autres. Vous pouvez également activer certains services, comme Cloud Backup, pour chaque volume créé.
+
+Avec les modèles proposés, vos administrateurs du stockage peuvent créer facilement des volumes optimisés en fonction des exigences de charge de travail pour chaque application déployée, comme les bases de données, la messagerie ou les services de streaming. Par ailleurs, vos architectes du stockage peuvent plus facilement gérer le quotidien de chaque volume, en sachant que chaque application est créée de façon optimale.
+
+
+
+== Caractéristiques
+
+AppTemplate offre les fonctionnalités et avantages suivants :
+
+* Automatisation et amélioration de la conception et du développement de votre infrastructure
+* Fournit un emplacement unique pour activer différents services cloud NetApp, tels que Cloud Backup et Cloud Data Sense
+* Identifie les ressources qui ont été modifiées et qui ne sont plus conformes au modèle (à l'aide de la fonction « dérive »)
++
+Pour le moment, vous devrez effectuer manuellement des ajustements afin de rétablir la conformité de la ressource avec le modèle. link:task-check-template-compliance.html["En savoir plus sur la dérive"].
+
+
+
+
+
+== Actions de modèle disponibles
+
+Un modèle est une chaîne d'actions qui ont des valeurs prédéfinies. Vous pouvez créer des modèles qui incluent les actions suivantes :
+
+*Actions de ressources :*
+
+* Création d'un volume Cloud Volumes ONTAP (sur AWS, Azure ou GCP)
+* Créer un volume Azure NetApp Files
+* Créer un volume ONTAP sur site
+* Création d'un environnement de travail Cloud Volumes ONTAP (nœud unique ou système HA sur AWS)
+* Rechercher les ressources existantes qui répondent à certains critères (vous pouvez donc appliquer une action « services » à la fermeture des ressources)
+
+
+*Actions de services :*
+
+* Activer https://docs.netapp.com/us-en/cloud-manager-backup-restore/concept-backup-to-cloud.html["La sauvegarde dans le cloud"^] Sur les volumes (non applicable à Azure NetApp Files)
+* Activer https://docs.netapp.com/us-en/cloud-manager-data-sense/concept-cloud-compliance.html["Sens des données cloud"^] sur les volumes
+* Activer https://docs.netapp.com/us-en/cloud-manager-replication/concept-replication.html["La réplication"^] Sur les volumes (non applicable à Azure NetApp Files)
+
+
+Par exemple, vous pouvez créer un modèle qui crée un volume Cloud Volumes ONTAP. Vous pouvez également créer un volume Cloud Volumes ONTAP, puis exécuter Cloud Backup sur ce volume. Ou qui crée un volume Cloud Volumes ONTAP, puis active Cloud Backup _et_ Cloud Data Sense sur ce volume.
+
+D'autres actions seront ajoutées au fil du temps par NetApp.
+
+
+
+== Fonctionnement d'AppTemplate
+
+Le service AppTemplate est constitué de 3 pièces. Le modèle « actions » disponible, le modèle d'application personnalisé et la ressource déployée suite à l'exécution du modèle. L'image suivante montre la relation entre chaque composant :
+
+image:diagram_template_flow1.png["Diagramme des différents utilisateurs impliqués dans la création et l'utilisation de modèles d'application."]
+
+À un niveau élevé, les modèles fonctionnent comme suit :
+
+. NetApp définit les « actions » modèles disponibles.
++
+Par exemple, une « action » pour créer un volume Cloud Volumes ONTAP ou Azure NetApp Files.
+
+. Votre architecte de stockage sélectionne les « actions » qu'il souhaite utiliser pour créer un modèle d'application, puis détermine en dur certaines valeurs pour les paramètres répertoriés.
++
+Par exemple, ils sélectionnent des disques ultra-rapides et une quantité importante de RAM pour les volumes Cloud Volumes ONTAP qui seront utilisés pour les charges de travail des bases de données Oracle. Et ils exigent que des sauvegardes soient effectuées pour chaque volume.
+
+. Vos administrateurs du stockage utilisent ces modèles pour créer des ressources optimisées pour les applications auxquelles ils seront utilisés.
++
+Ils créent, par exemple, un volume qui sera utilisé pour une base de données Oracle en utilisant le modèle de volume créé pour les bases de données.
+
+. Le service assure le suivi de certains paramètres de ressources définis dans le modèle à l'aide de la fonctionnalité de « dérive » déterminée par votre architecte du stockage.
+
+
+
+
+== Prix et licences
+
+La fonctionnalité AppTemplate ne nécessite pas de licence et est gratuite pour tous les utilisateurs de BlueXP.
+
+
+NOTE: Des modèles vous permettent d'appliquer un service cloud aux ressources créées, par exemple, pour activer Cloud Backup sur chaque volume. Dans ce cas, il existe des frais pour l'utilisation du service de sauvegarde et de l'espace de stockage objet utilisé par les fichiers de sauvegarde.
+
+
+
+== Limites
+
+* Le service AppTemplate n'est pas pris en charge dans les régions Cloud du gouvernement ou dans les sites sans accès Internet.
+* Vous ne pouvez pas utiliser un modèle pour créer un volume Cloud Volumes ONTAP sur un agrégat existant. Les nouveaux volumes sont créés dans un nouvel agrégat.
+

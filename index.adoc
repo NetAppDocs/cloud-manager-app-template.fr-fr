@@ -1,0 +1,16 @@
+---
+layout: astra 
+sidebar: sidebar 
+permalink: index.html 
+lead: The AppTemplate service enables you to standardize resource creation for your BlueXP working environments. 
+summary: Le service AppTemplate vous permet de standardiser la création de ressources pour vos environnements de travail BlueXP. 
+---
+= Documentation AppTemplate
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+

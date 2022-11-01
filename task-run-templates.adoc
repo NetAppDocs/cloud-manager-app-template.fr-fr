@@ -1,0 +1,180 @@
+---
+sidebar: sidebar 
+permalink: task-run-templates.html 
+keywords: templates, resource templates, services templates, volume templates, working environment templates 
+summary: 'Sélectionnez l"un des modèles d"applications que votre organisation a conçus pour créer des environnements de travail ou des volumes optimisés pour des charges de travail et des applications spécifiques. Vous pouvez également activer Cloud Backup, Cloud Data Sense et Replication (SnapMirror) sur les volumes ou sur des volumes existants.' 
+---
+= Créez ou modifiez des ressources à l'aide de modèles
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Sélectionnez l'un des modèles d'applications que votre organisation a conçus pour créer des environnements de travail ou des volumes optimisés pour des charges de travail et des applications spécifiques. Les modèles vous permettent également d'activer https://docs.netapp.com/us-en/cloud-manager-backup-restore/concept-backup-to-cloud.html["La sauvegarde dans le cloud"^], https://docs.netapp.com/us-en/cloud-manager-data-sense/concept-cloud-compliance.html["Sens des données cloud"^], et https://docs.netapp.com/us-en/cloud-manager-replication/concept-replication.html["Réplication (SnapMirror)"^] sur les volumes créés ou sur les volumes existants.
+
+Il est possible de créer des volumes pour les systèmes Cloud Volumes ONTAP, Azure NetApp Files et ONTAP sur site.
+
+
+
+== Démarrage rapide
+
+Pour commencer rapidement, suivez ces étapes ou faites défiler jusqu'aux sections restantes pour obtenir de plus amples informations.
+
+.<span class=« image »><img src="https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png"[] alt=« one »></span> vérifier les prérequis requis
+* Avant de pouvoir créer un volume pour un système Cloud Volumes ONTAP, ONTAP sur site ou Azure NetApp Files à l'aide d'un modèle, assurez-vous d'avoir accès à un environnement de travail approprié dans lequel le volume sera déployé.
+
+
+* Si le modèle active un service cloud sur le volume, par exemple https://docs.netapp.com/us-en/cloud-manager-backup-restore/concept-backup-to-cloud.html["La sauvegarde dans le cloud"^] ou https://docs.netapp.com/us-en/cloud-manager-data-sense/concept-cloud-compliance.html["Sens des données cloud"^], assurez-vous que le service est actif et sous licence dans votre environnement.
+
+
+[role="quick-margin-para"]
+Sélectionnez *Santé > correction* et cliquez sur l'onglet *modèles*.
+
+[role="quick-margin-para"]
+Sélectionnez le modèle, cliquez sur *Exécuter le modèle* et entrez des valeurs dans les champs modifiables pour créer la ressource.
+
+
+
+== De formation
+
+Lisez les informations suivantes pour vous assurer que votre configuration est prise en charge.
+
+* Si vous n'avez pas encore de connecteur, https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-connectors.html["Voir comment créer des connecteurs"^] Pour AWS, Azure et GCP.
+* Lorsque vous créez un volume Cloud Volumes ONTAP, vérifiez que vous disposez d'un environnement de travail Cloud Volumes ONTAP.
+* Lorsque vous créez un volume ONTAP sur site, vérifiez que vous disposez d'un environnement de travail ONTAP sur site.
+* Lorsque vous créez un volume Azure NetApp Files, vérifiez que vous disposez d'un environnement de travail Azure NetApp Files.
+* Si le modèle active un service cloud sur le volume, par exemple  https://docs.netapp.com/us-en/cloud-manager-backup-restore/concept-backup-to-cloud.html["La sauvegarde dans le cloud"^], https://docs.netapp.com/us-en/cloud-manager-data-sense/concept-cloud-compliance.html["Sens des données cloud"^], ou https://docs.netapp.com/us-en/cloud-manager-replication/concept-replication.html["Réplication (SnapMirror)"^], assurez-vous que le service est actif et sous licence dans votre environnement.
+
+
+
+
+== Sélectionnez et exécutez un modèle de volume
+
+Il existe plusieurs façons de sélectionner et d'exécuter un modèle pour créer de nouveaux volumes :
+
+* Exécutez le modèle de volume à partir de l'environnement de travail
+* Exécutez le modèle de volume à partir du tableau de bord modèles
+
+
+Quelle que soit la méthode choisie, les détails des paramètres de volume que vous devez définir sont disponibles dans les sections suivantes :
+
+* https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-create-volumes.html#create-a-volume-from-a-template["Provisionnement de volumes Cloud Volumes ONTAP"^]
+* https://docs.netapp.com/us-en/cloud-manager-azure-netapp-files/task-create-volumes.html#create-volumes-from-templates["Provisionnement de volumes Azure NetApp Files"^]
+* https://docs.netapp.com/us-en/cloud-manager-ontap-onprem/task-provisioning-ontap.html#creating-volumes-from-templates["Comment provisionner des volumes ONTAP sur site"^]
+
+
+
+
+=== Exécuter un modèle de volume à partir de l'environnement de travail
+
+Vous pouvez ajouter un volume à un environnement de travail existant à partir de la page _Working Environment_ et de la page _Volume Details_.
+
+.Étapes
+. Dans la page _Environnement_ de travail ou dans la page _Détails_ du volume, cliquez sur *Ajouter un volume à partir du modèle*.
++
+image:screenshot_template_add_vol_from.png["Deux captures d'écran montrant comment les utilisateurs peuvent créer de nouveaux volumes à partir d'un modèle."]
+
++
+Le tableau de bord _Templates_ s'affiche et ne répertorie que les modèles applicables à l'environnement de travail sélectionné -- par exemple, il affiche uniquement les modèles Cloud Volumes ONTAP.
+
+. Cliquez sur image:screenshot_horizontal_more_button.gif["Plus d'icône"] Et *Exécuter le modèle*.
++
+image:screenshot_template_run_from_dashboard.png["Capture d'écran montrant comment exécuter un modèle à partir du Tableau de bord des modèles."]
+
++
+La page _Ajouter un volume à partir du modèle_ s'affiche.
+
+. Entrez des valeurs dans les champs modifiables pour créer le volume et cliquez sur *Exécuter le modèle*.
++
+image:screenshot_run_template_from_canvas.png["Capture d'écran montrant les paramètres que vous devez définir pour créer le volume à partir d'un modèle."]
+
+
+
+
+
+=== Exécutez un modèle de volume à partir du Tableau de bord modèles
+
+Vous pouvez ajouter un volume à un environnement de travail existant à partir du tableau de bord _Templates_.
+
+.Étapes
+. Sélectionnez *Santé > correction* et cliquez sur l'onglet *modèles*.
++
+Le tableau de bord _Templates_ s'affiche.
+
+. Pour le modèle que vous souhaitez utiliser, cliquez sur image:screenshot_horizontal_more_button.gif["Plus d'icône"] Et *Exécuter le modèle*.
++
+image:screenshot_template_run_from_dashboard2.png["Capture d'écran montrant comment exécuter un modèle à partir du Tableau de bord des modèles."]
+
++
+La page _Exécuter modèle_ s'affiche.
+
+. Entrez des valeurs dans les champs modifiables pour créer le volume et cliquez sur *Exécuter le modèle*.
++
+image:screenshot_run_template_from_dashboard.png["Capture d'écran montrant les paramètres que vous devez définir pour créer le volume à partir d'un modèle."]
+
++
+Notez que lorsque vous exécutez le modèle depuis le tableau de bord, vous devez sélectionner l'environnement de travail et d'autres variables (par exemple, la machine virtuelle de stockage et/ou l'agrégat). Lorsque vous exécutez le modèle à partir de l'environnement de travail, l'environnement de travail est automatiquement rempli.
+
+
+
+
+
+== Sélectionnez et exécutez un modèle d'environnement de travail
+
+Vous pouvez créer un nouvel environnement de travail à partir du tableau de bord _Templates_ si votre entreprise a créé un modèle pour cette fonctionnalité.
+
+Si vous avez des questions sur les détails nécessaires à la création de l'environnement de travail, reportez-vous à la section https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-deploying-otc-aws.html["Lancement d'Cloud Volumes ONTAP dans AWS"^].
+
+.Étapes
+. Sélectionnez *Santé > correction* et cliquez sur l'onglet *modèles*.
++
+Le tableau de bord _Templates_ s'affiche.
+
+. Pour le modèle que vous souhaitez utiliser, cliquez sur image:screenshot_horizontal_more_button.gif["Plus d'icône"] Et *Exécuter le modèle*.
++
+image:screenshot_template_run_from_dashboard3.png["Capture d'écran montrant comment exécuter un modèle à partir du Tableau de bord des modèles."]
+
++
+La page _Exécuter modèle_ s'affiche.
+
+. Entrez des valeurs dans les champs modifiables pour créer l'environnement de travail et le premier volume, puis cliquez sur *Exécuter le modèle*.
++
+image:screenshot_template_run_from_dashboard_we.png["Capture d'écran montrant les paramètres que vous devez définir pour créer l'environnement de travail à partir d'un modèle."]
+
+
+
+
+
+== Sélectionnez et exécutez un modèle qui trouve les ressources existantes
+
+Vous pouvez exécuter un modèle qui trouve certaines ressources (par exemple, les volumes), puis active un service cloud sur ces ressources (par exemple, Cloud Backup), si votre entreprise a créé un modèle à l'aide de cette fonctionnalité. Lors de l'exécution du modèle, vous pouvez apporter des ajustements mineurs afin d'appliquer le service cloud uniquement aux ressources appropriées.
+
+.Étapes
+. Sélectionnez *Santé > correction* et cliquez sur l'onglet *modèles*.
++
+Le tableau de bord _Templates_ s'affiche.
+
+. Pour le modèle que vous souhaitez utiliser, cliquez sur image:screenshot_horizontal_more_button.gif["Plus d'icône"] Et *Exécuter le modèle*.
++
+image:screenshot_template_run_from_dashboard4.png["Capture d'écran montrant comment exécuter un modèle à partir du Tableau de bord des modèles."]
+
++
+La page _Run Template_ s'affiche et exécute immédiatement la recherche qui a été définie dans le modèle pour trouver les volumes correspondant aux critères.
+
+. Afficher la liste des volumes renvoyés dans la zone _Volume Results_.
++
+image:screenshot_template_find_search_results.png["Capture d'écran montrant comment les volumes renvoyés à partir des critères de recherche de ressource de recherche."]
+
+. Si les résultats sont ce que vous aviez prévu, cochez la case pour chaque volume que vous souhaitez activer Cloud Backup à l'aide des critères de la section _Activer la sauvegarde dans le cloud sur volume_ du modèle et cliquez sur *Exécuter modèle*.
++
+Si les résultats ne correspondent pas à vos attentes, cliquez sur image:screenshot_edit_icon.gif["modifier l'icône du crayon"] En regard de _Search Criteria_ et affiner la recherche.
+
+
+
+Le modèle s'exécute et active Cloud Backup sur chaque volume sélectionné à partir des critères de recherche.
+
+Toute erreur sera signalée dans la page _Exécuter votre modèle_ et vous pouvez résoudre les problèmes si nécessaire.

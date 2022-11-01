@@ -1,0 +1,131 @@
+---
+sidebar: sidebar 
+permalink: task-using-tags.html 
+keywords: tags, resource tags, volume tags, add tags, delete tags, view tags 
+summary: 'Vous pouvez afficher, ajouter, modifier et supprimer les balises affectées à vos ressources existantes à l"aide du service de marquage BlueXP. Vous pouvez ainsi organiser et simplifier la gestion de vos ressources.' 
+---
+= Gérez les balises de vos ressources
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Vous pouvez afficher, ajouter, modifier et supprimer les balises affectées à vos ressources existantes à l'aide du service de marquage BlueXP. Vous pouvez ainsi organiser et simplifier la gestion de vos ressources.
+
+
+
+== Recherchez des ressources qui ont certaines balises
+
+Si vous voulez voir toutes les ressources qui ont une balise spécifique, ou une certaine valeur de balise et de clé de balise, vous pouvez rechercher ces balises. Vous pouvez effectuer des recherches dans toutes les ressources ou uniquement dans certaines catégories de ressources.
+
+.Étapes
+. Sélectionnez *Santé > correction* et cliquez sur l'onglet *balises*.
+. Si nécessaire, choisissez les informations d'identification d'un fournisseur de cloud spécifique dans le champ *Sélectionner les informations d'identification*.
+. Dans le champ _Resource Type_, sélectionnez la ressource, par exemple *ONTAP:CVO:VOLUME* pour effectuer une recherche sur l'ensemble des volumes Cloud Volumes ONTAP.
+. Dans le champ _Tag Key_, sélectionnez la balise, par exemple *Env* pour limiter la recherche aux volumes à l'aide de la balise Env.
+. Dans le champ _Tag Value_, sélectionnez la valeur clé, par exemple *production* pour limiter la recherche aux volumes dont le nom de balise est « Env » et la valeur de balise « production ».
++
+image:screenshot_tags_search_single_1.png["Capture d'écran indiquant la sélection d'un ensemble unique de critères de recherche pour renvoyer une ressource avec une clé de balise et une valeur de balise spécifiques."]
+
+. Cliquez sur le bouton image:screenshot_plus_icon.gif[""] Pour ajouter ces critères de recherche à la zone de recherche.
++
+image:screenshot_tags_search_single_2.png["Capture d'écran des critères de recherche de balise ajoutée à la ligne de recherche."]
+
+. Si vous avez terminé votre recherche, cliquez sur *Rechercher* et les résultats de la recherche apparaissent dans la section Ressources.
++
+image:screenshot_tags_search_single_result.png["Capture d'écran des résultats pour les ressources répondant aux critères de recherche de balises."]
+
++
+Si vous souhaitez ajouter des critères de recherche supplémentaires, suivez de nouveau les étapes 3 à 6, puis cliquez sur *Rechercher*.
+
+
+
+
+
+=== Règles de recherche
+
+Les règles suivantes s'appliquent lors de la définition de votre recherche :
+
+* Après avoir sélectionné un type de ressource, vous pouvez laisser les champs clé de balise et valeur de balise vides si vous voulez afficher toutes les ressources qui ont une clé et une valeur de clé.
+* Vous pouvez choisir une recherche unique ou définir plusieurs recherches pour affiner les résultats dans la section Ressources.
+* Lors de la définition de plusieurs ensembles de critères de recherche :
++
+** Si les critères pour deux recherches sont pour différents types de ressources, alors cette opération est traitée comme une opération "OU" et le résultat affiche les ressources des deux recherches. Par exemple, la recherche suivante renvoie tous les volumes Azure NetApp Files présentant la valeur de l'étiquette « Environnement:démo » et tous les volumes Cloud Volumes ONTAP dotés de la valeur de l'étiquette « Environnement:démo ».
++
+image:screenshot_tags_search_or.png[""]
+
+** Si les critères pour deux recherches sont pour le même type de ressource, alors cette opération est traitée comme une opération "ET" et le résultat n'affiche que les ressources qui correspondent à *les deux recherches*. Par exemple, la recherche suivante renvoie des volumes Azure NetApp Files ayant la valeur de balise « Environnement:démo » et la valeur de balise « Groupe:Finance ».
++
+image:screenshot_tags_search_and.png[""]
+
+
+
+* Si vous avez défini plusieurs critères de recherche, puis décidez d'en supprimer un, cliquez simplement sur le bouton image:button_delete_tag_search.png[""] Pour le supprimer de la zone de recherche.
+
+
+
+
+== Ajoutez des balises aux ressources existantes
+
+Vous pouvez appliquer des balises à une seule ressource ou à plusieurs ressources. Les ressources peuvent avoir des balises existantes ou n'ont pas de balises actuelles.
+
+link:concept-tagging.html#resources-that-you-can-tag["Reportez-vous à la liste des ressources que vous pouvez marquer pour le moment."]
+
+.Étapes
+. Dans l'onglet *Tags*, créez vos critères de recherche et cliquez sur *Rechercher*.
+. Sélectionnez la ou les ressources que vous souhaitez marquer.
++
+** Pour sélectionner toutes les ressources de la page, cochez la case dans la ligne de titre (image:button_select_all_resources.png[""]).
+** Pour sélectionner plusieurs ressources, cochez la case pour chaque ressource (image:button_backup_1_volume.png[""]).
+** Pour sélectionner une seule ressource, cliquez sur le bouton image:button_select_1_resource.png["bouton plus"] icône de la ressource.
++
+image:screenshot_tags_how_2_select_resources.png["Capture d'écran indiquant comment sélectionner une seule ressource, plusieurs ressources ou toutes les ressources."]
+
+
+
+. Cliquez sur *gérer les balises* et la boîte de dialogue _Resource Tags_ apparaît. Toutes les balises existantes apparaissent dans cette boîte de dialogue.
++
+image:screenshot_tags_resource_tags_dialog.png["Capture d'écran affichant la boîte de dialogue de balise de ressource dans laquelle vous pouvez afficher les balises actuellement affectées et ajouter de nouvelles balises."]
+
+. Cliquez sur *Ajouter une nouvelle balise* et une ligne de clé de balise et de valeur de balise vide apparaît dans la boîte de dialogue.
+. Entrez la clé de balise et la valeur de balise. Ajoutez d'autres balises à ce moment si vous voulez plus de balises sur cette ressource, puis cliquez sur *Revue et appliquer*.
+. Si vos modifications semblent correctes dans la page _revérification_, cliquez sur *Enregistrer* et la nouvelle balise est ajoutée à la ressource ou à toutes les ressources sélectionnées.
+
+
+
+
+== Modifiez les valeurs de balise d'une ressource
+
+Vous pouvez modifier les balises affectées à des ressources et modifier la valeur de balise appliquée à une balise existante.
+
+.Étapes
+. Dans l'onglet *Tags*, créez vos critères de recherche et cliquez sur *Rechercher*.
+. Sélectionnez la ou les ressources dont vous souhaitez modifier les balises.
+. Cliquez sur *gérer les balises* et la boîte de dialogue _Resource Tags_ apparaît.
++
+image:screenshot_tags_modify_tag.png["Capture d'écran indiquant comment modifier une balise à partir d'une ressource ou de plusieurs ressources."]
+
+. Entrez une nouvelle valeur pour la valeur de balise et cliquez sur *Revue et appliquer*.
+. Si votre modification semble correcte dans la page _revérification_, cliquez sur *Enregistrer* et la valeur de la balise est modifiée pour la ressource ou pour toutes les ressources sélectionnées.
+
+
+
+
+== Supprimez des balises des ressources
+
+Vous pouvez supprimer une paire clé/valeur de balise d'une seule ressource ou de plusieurs ressources.
+
+.Étapes
+. Dans l'onglet *Tags*, créez vos critères de recherche et cliquez sur *Rechercher*.
+. Sélectionnez la ou les ressources dont vous souhaitez supprimer des balises.
+. Cliquez sur *gérer les balises* et la boîte de dialogue _Resource Tags_ apparaît.
++
+image:screenshot_tags_delete_tag.png["Capture d'écran indiquant comment supprimer une balise d'une ressource ou de plusieurs ressources."]
+
+. Cliquez sur le bouton image:button_delete_tag_pair.png[""] Pour la paire clé/valeur de balise à supprimer et la ligne est supprimée, puis cliquez sur *Revue et appliquer*.
+. Si votre modification semble correcte dans la page _revérification_, cliquez sur *Enregistrer* et la paire clé/valeur de balise est supprimée de la ressource ou de toutes les ressources sélectionnées.
+
