@@ -1,0 +1,2098 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head class="at-element-marker">
+  <title>Création de modèles d&#8217;application pour votre organisation | NetApp Documentation</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="Création de modèles d&#8217;application pour votre organisation | NetApp Documentation" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.netapp.com/fr-fr/cloud-manager-app-template/task-define-templates.html" />
+	<meta property="og:description" content="Sélectionnez une ou plusieurs des « actions » fournies par NetApp et créez rapidement un modèle d"application que votre entreprise peut utiliser pour commenc..." />
+  <meta property="og:image" content="https://docs.netapp.com/fr-fr/cloud-manager-app-template/images/logo-tophat-social.png" />
+  <meta property="og:image:alt" content="NetApp Logo" />
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation"/>
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="Sélectionnez une ou plusieurs des « actions » fournies par NetApp et créez rapidement un modèle d"application que votre entreprise peut utiliser pour commenc...">
+  <meta name="keywords" content=" templates, resource templates, services templates, volume templates, cvo working environment template, find volumes"><!-- Icons -->
+  <link rel="icon" href="/fr-fr/cloud-manager-app-template/images/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Feed --><link rel="alternate" type="application/rss+xml" title="NetApp Documentation" href="/fr-fr/cloud-manager-app-template/feed.xml"><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+  <!-- Elastic Search -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/searchkit/0.10.0/theme.css">
+
+  <!-- Combined CSS -->
+  <link rel="stylesheet" type="text/css" href="/fr-fr/cloud-manager-app-template/css/netappdocs.css">
+
+  
+  <link rel="stylesheet" href="/fr-fr/cloud-manager-app-template/css/landing-page.css" type="text/css">
+  <link rel="stylesheet" href="/fr-fr/cloud-manager-app-template/css/tabbed-blocks.css" type="text/css">
+  <!-- Canonical url -->
+  <link rel='stylesheet' href='/fr-fr/cloud-manager-app-template/css/na-feature.css' type='text/css'><!-- Top level site integrations --><script>
+    function addAdobeLaunch(adobeId) {
+      var head = document.getElementsByTagName('head')[0];
+      var adobe = document.createElement("script");
+      adobe.type = "text/plain";
+      adobe.className = "optanon-category-C0002";
+      adobe.src = "//assets.adobedtm.com/60287eadf1ee/c284da483c83/"+adobeId+".min.js";
+      head.appendChild(adobe);
+    }
+
+    function addGoogleAnalytics(gtagId) {
+      var google = document.createElement("script");
+      google.type = "text/plain";
+      google.className = "optanon-category-C0002";
+      google.src = "https://www.googletagmanager.com/gtag/js?id="+gtagId;
+      var head = document.getElementsByTagName('head')[0];
+      head.appendChild(google);
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', gtagId);
+    }
+
+    function addConsent(consentId) {
+      var head = document.getElementsByTagName('head')[0];
+      var onetrustConsent = document.createElement("script");
+      onetrustConsent.type = "text/javascript";
+      onetrustConsent.src = "https://cdn.cookielaw.org/consent/"+consentId+"/OtAutoBlock.js";
+      head.appendChild(onetrustConsent);
+
+      var onetrustScript = document.createElement("script");
+      onetrustScript.type = "text/javascript";
+      onetrustScript.src = "https://cdn.cookielaw.org/scripttemplates/otSDKStub.js";
+      onetrustScript.charset = "UTF-8";
+      onetrustScript.dataset.documentLanguage = "true";
+      onetrustScript.dataset.domainScript = consentId;
+      head.appendChild(onetrustScript);
+    }addConsent("72570c5c-fe30-465f-b0e0-b77f7fb4ae34");
+    addAdobeLaunch("launch-e9ff3acac59f");
+    addGoogleAnalytics("UA-81697994-3");function OptanonWrapper() { }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+  <!-- Used for Product Family Page Sidebar Visibility --><!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script><script src='/fr-fr/cloud-manager-app-template/js/na-search.js'></script><script src='/fr-fr/cloud-manager-app-template/js/na-pagenav.js'></script><script src='/fr-fr/cloud-manager-app-template/js/na-utility.js'></script>
+  <script src='/fr-fr/cloud-manager-app-template/js/clouddocs.js'></script>
+  <script src='/fr-fr/cloud-manager-app-template/js/jquery.navgoco.min.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src='/fr-fr/cloud-manager-app-template/js/toc.js'></script>
+  <script src='/fr-fr/cloud-manager-app-template/js/customscripts.js'></script><script>
+      $(document).ready(function() {
+          
+          var collapseOnInit = true;
+          
+
+          var navSettings = {
+              "caretHtml": '',
+              "accordion": collapseOnInit,
+              "openClass": 'active', // open
+              "save": false, // leave false or nav highlighting doesn't work right
+              "cookie": {
+                  "name": 'navgoco',
+                  "expires": false,
+                  "path": '/'
+              },
+              "slide": {
+                  "duration": 400,
+                  "easing": 'swing'
+              }
+          };
+
+          // Initialize navgoco with default options
+          $("#mysidebar").navgoco(navSettings);
+          
+
+          $("#collapseAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', false);
+          });
+
+          $("#expandAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', true);
+          });
+
+          $(".sidebar-nav-container").on("scroll", function() {
+            $.cookie("sidebarScroll", $(".sidebar-nav-container").scrollTop(), {
+              path    : "/fr-fr/cloud-manager-app-template"  
+            });
+          });
+          $(function() {
+            if ($.cookie("sidebarScroll")) {
+              $(".sidebar-nav-container").scrollTop($.cookie("sidebarScroll"));
+            }
+          });
+
+      });
+
+  </script>
+  <script>
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+  </script>
+  <script src='/fr-fr/cloud-manager-app-template/js/custom-dropdown.js'></script>
+  <script src='/fr-fr/cloud-manager-app-template/js/FileSaver.min.js'></script>
+  <script src='/fr-fr/cloud-manager-app-template/js/jszip-utils.min.js'></script>
+  <script src='/fr-fr/cloud-manager-app-template/js/jszip.min.js'></script>
+  <script src='/fr-fr/cloud-manager-app-template/js/pdf-ux.js'></script>
+</head>
+
+
+  <body class role="document" data-flavor="">
+    <div id="page" class="n-off-canvas-menu">
+      <div class="n-off-canvas-menu__menu"><!--TODO: Add offcanvas code --></div>
+      <div class="n-off-canvas-menu__content-wrap">
+        <header class="site-header" id="banner">
+  
+  <!-- Start Page Toolbar -->
+  
+  <div class="page-nav-toolbar"><div class="page-nav-contribute"><a target="_blank" href="https://github.com/NetAppDocs/cloud-manager-app-template/issues/new?body=Page%3A%20[Création de modèles d&#8217;application pour votre organisation](https://docs.netapp.com/fr-fr/cloud-manager-app-template/task-define-templates.html)&template=public-issue-template.md" class="page-nav-contribute-link" role="button"><img src="/fr-fr/cloud-manager-app-template/images/discuss-sm.svg" alt="" class="github-icon" />Demander de modifier un document</a><a target="_blank" href="https://github.com/NetAppDocs/cloud-manager-app-template/blob/main/task-define-templates.adoc" class="page-nav-contribute-link" role="button"><img src="/fr-fr/cloud-manager-app-template/images/edit-sm.svg" alt="" class="github-icon" />Modifier sur GitHub</a><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/fr-fr/cloud-manager-app-template/images/article-sm.svg" alt="" class="github-icon" />Guide des contributeurs</a></div>
+    <div class="page-nav-container">
+      <nav class="page-nav-fixed">
+        <div class="page-nav-title">SUR CETTE PAGE</div>
+        <div class="page-nav-links">
+          <ul class="page-nav-inner" id="page-menu"></ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  
+  
+  <!-- Start top_hat -->
+  <div class="n-top-hat">
+    <div class="n-container">
+      <div class="n-top-hat__cross-property-nav">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/products-a-z/" class="n-top-hat__link">Produits et solutions</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/support-and-training/netapp-university/" class="n-top-hat__link">Support et formation</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://cloud.netapp.com" class="n-top-hat__link">Cloud Central</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://community.netapp.com/" class="n-top-hat__link">Communauté</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://blog.netapp.com/" class="n-top-hat__link">Blog</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://customers.netapp.com/en/" class="n-top-hat__link">Témoignages clients</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">Contact</a>
+          </li>
+        </ul>
+      </div>
+      <div class="n-top-hat__utils">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- End top_hat -->
+
+  <!-- Start property bar -->
+  <style>
+    .n-property-navigation-bar__menus--desktop-experience .n-menu--mega__default-content__heading span {
+    color: #34B0FF;
+    }
+  </style>
+  <div class="n-property-bar " data-ntap-ui="sticky-nav">
+    <div class="n-property-bar__inner-wrap">
+      <div class="n-property-bar__menu-toggle">
+        <a href="#" class="n-property-bar__menu-toggle-link">
+          <span class="n-property-bar__menu-toggle-text">Menu</span>
+          <svg class="n-icon-bars n-property-bar__menu-toggle-icon" aria-labelledby="title">
+            <title>bars</title>
+            <use xlink:href="/fr-fr/cloud-manager-app-template/common/svg/sprite.svg#bars"></use>
+          </svg>
+        </a>
+      </div>
+      <div class="n-property-bar__property-mark ">
+        <a href="https://www.netapp.com" class="n-property-bar__property-link">
+          <div class="n-property-bar__logo">
+            <svg class="n-icon-netapp-mark n-icon-netapp-mark n-property-bar__netapp-mark-icon" aria-labelledby="title">
+              <title>netapp-mark</title>
+              <use xlink:href="/fr-fr/cloud-manager-app-template/common/svg/sprite.svg#netapp-mark"></use>
+            </svg>
+            <svg class="n-icon-netapp-logo n-property-bar__logo-svg" aria-labelledby="title">
+              <title>netapp-logo</title>
+              <use xlink:href="/fr-fr/cloud-manager-app-template/common/svg/sprite.svg#netapp-logo"></use>
+            </svg>
+          </div>
+        </a>
+      </div>
+
+      
+      
+      
+      <div class="search-property-bar">
+        <div id="search-demo-container" class="searchbox n-property-bar__search">
+          <div id="react-search" 
+          data-search-html="/fr-fr/cloud-manager-app-template/search.html"
+          data-type="widget" 
+          data-placeholder="Rechercher une documentation"
+          data-no-results-found="Aucun résultat n'a été trouvé pour {query}"
+          data-did-you-mean="Rechercher {suggestion}."
+          data-no-results-found-did-you-mean="Aucun résultat n’a été trouvé pour {query}. Voulez-vous dire {suggestion} ?"
+          data-results-found="{hitCount} résultats trouvés"
+          data-error-message="We're sorry, an issue occurred when fetching your results. Please try again."
+          data-error-reset="Reset Search"
+          data-sk-es-pf-indexes=""
+          data-flavor=""></div>
+          <button class="n-property-bar__search-toggle-button" type="button">
+            <svg class="n-icon-search n-property-bar__search-toggle-button-icon" aria-labelledby="title">
+              <title>search</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/fr-fr/cloud-manager-app-template/common/svg/sprite.svg#search"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="n-property-bar__toolbar">
+    <!-- Start Language Selector --><div id="language-dropdown" class="custom-dropdown custom-dropdown-lang">
+      <div class="custom-dropdown-select custom-dropdown-select-lang">
+      <span class="lang-name">Français</span>
+          <svg class="n-globe__icon" aria-labelledby="title">
+            <title>globe</title>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/fr-fr/cloud-manager-app-template/common/svg/sprite.svg#globe"></use>
+          </svg>
+        </button>
+      </div>
+
+      <ul class="custom-dropdown-menu"><li>
+          <a href="https://docs.netapp.com/fr-fr/cloud-manager-app-template/task-define-templates.html" target="_self"><span translate="no" class="notranslate">Français</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/us-en/cloud-manager-app-template/task-define-templates.html" target="_self"><span translate="no" class="notranslate">English</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/ja-jp/cloud-manager-app-template/task-define-templates.html" target="_self"><span translate="no" class="notranslate">日本語</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/zh-cn/cloud-manager-app-template/task-define-templates.html" target="_self"><span translate="no" class="notranslate">简体中文</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/zh-tw/cloud-manager-app-template/task-define-templates.html" target="_self"><span translate="no" class="notranslate">繁體中文</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/ko-kr/cloud-manager-app-template/task-define-templates.html" target="_self"><span translate="no" class="notranslate">한국어</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/de-de/cloud-manager-app-template/task-define-templates.html" target="_self"><span translate="no" class="notranslate">Deutsch</span></a>
+        </li></ul>
+    </div><!-- End Language Selector -->
+
+    <div class="n-property-bar__cta"></div>
+  </div>
+  <script>
+    $(function(){
+        var currentLocalization = $('html').attr('lang');
+
+        var localizationsDictionary = {
+            "en-CA" : "https://www.netapp.com/search/index.aspx?for_cr=canada&",
+            "en-IN" : "https://www.netapp.com/search/index.aspx?for_cr=india&",
+            "nl-NL" : "https://www.netapp.com/search/index.aspx?for_cr=netherlands&",
+            "ru-RU" : "https://www.netapp.com/search/index.aspx?for_cr=russia&",
+            "sv-SE" : "https://www.netapp.com/search/index.aspx?for_cr=sweden&",
+            "it-IT" : "https://www.netapp.com/search/index.aspx?for_cr=italy&",
+            "he-IL" : "https://www.netapp.com/search/index.aspx?for_cr=israel&",
+            "ko-KR" : "https://www.netapp.com/search/index.aspx?for_cr=korea&",
+            "zh-TW" : "https://www.netapp.com/search/index.aspx?for_cr=taiwan&",
+            "en-GB" : "https://www.netapp.com/search/index.aspx?for_cr=unitedkingdom&",
+            "en-SG" : "https://www.netapp.com/search/index.aspx?for_cr=asean&",
+            "en-AU" : "https://www.netapp.com/search/index.aspx?for_cr=australia&",
+            "pt-BR" : "https://www.netapp.com/search/index.aspx?for_cr=brasil&",
+            "de-CH" : "https://www.netapp.com/search/index.aspx?for_cr=switzerland&",
+            "es-MX" : "https://www.netapp.com/search/index.aspx?for_cr=mexico&"
+        };
+
+        if($('html').hasClass('ntap-whitelisted') && localizationsDictionary.hasOwnProperty(currentLocalization)) {
+            $('.n-property-bar__property-link').attr('href', '/');
+        }
+    });
+  </script>
+  <!-- End property bar -->
+</header>
+
+
+        <main id="n-main-content" class="n-main-content">
+          <!-- Start Documentation Content -->
+<div class="ie-main">
+  <!-- Sidebar Column -->
+  
+  <div class="col-md-3" id="sidebar-height">
+      <button id="btn-sidebar-collapse" onclick="hideSidebar()"><img src="/fr-fr/cloud-manager-app-template/images/collapse.png" alt="Réduire le panneau de navigation"></button>
+      <div class="n-pdf-header">
+  <a id="toggleButtonPdf" class="n-pdf-button" type="button">
+    <img src="/fr-fr/cloud-manager-app-template/images/pdf.png" alt="" width="16" height="16"/>PDFs disponibles<span>
+    </span>
+  </a>
+</div>
+<div class="n-pdf-body-container">
+  <ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;"><li class="pdf-ux-container">
+        
+        
+        
+        <a target="_blank" href="/fr-fr/cloud-manager-app-template/pdfs/fullsite-sidebar/Documentation_AppTemplate.pdf" >
+          <img src="/fr-fr/cloud-manager-app-template/images/pdf.png" alt="" width="16" height="16"/>PDF de ce site de documentation</a>
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/fr-fr/cloud-manager-app-template/pdfs/sidebar/Commencez.pdf" 
+            
+          >
+            <img src="/fr-fr/cloud-manager-app-template/images/pdf.png" alt="" width="16" height="16"/>
+            Commencez
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/fr-fr/cloud-manager-app-template/pdfs/sidebar/Utiliser_AppTemplate.pdf" 
+            
+          >
+            <img src="/fr-fr/cloud-manager-app-template/images/pdf.png" alt="" width="16" height="16"/>
+            Utiliser AppTemplate
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/fr-fr/cloud-manager-app-template/pdfs/sidebar/Utilisez_des_modèles_pour_standardiser_la_création_de_ressources.pdf" 
+            
+          >
+            <img src="/fr-fr/cloud-manager-app-template/images/pdf.png" alt="" width="16" height="16"/>
+            Utilisez des modèles pour standardiser la création de ressources
+          </a>
+          
+    <ul class="subfolders" id="pdf-remove" style="display:none;"><li class="active"></li></ul>
+  
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/fr-fr/cloud-manager-app-template/pdfs/sidebar/Organisez_vos_ressources_à_l_aide_de_balises.pdf" 
+            
+          >
+            <img src="/fr-fr/cloud-manager-app-template/images/pdf.png" alt="" width="16" height="16"/>
+            Organisez vos ressources à l'aide de balises
+          </a>
+          
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/fr-fr/cloud-manager-app-template/pdfs/sidebar/Concepts.pdf" 
+            
+          >
+            <img src="/fr-fr/cloud-manager-app-template/images/pdf.png" alt="" width="16" height="16"/>
+            Concepts
+          </a>
+          
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/fr-fr/cloud-manager-app-template/pdfs/sidebar/Connaissances_et_support.pdf" 
+            
+          >
+            <img src="/fr-fr/cloud-manager-app-template/images/pdf.png" alt="" width="16" height="16"/>
+            Connaissances et support
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+</li></ul>
+  <div class="zip-pdf-link-container" style="display: none;">   
+    <a href="#" id="zipPdf">
+      <img src="/fr-fr/cloud-manager-app-template/images/pdf-zip.png" alt="" width="16" height="16"/>
+      <pre>Collection de documents PDF séparés<span class="zip-size"></span></pre>
+    </a><div id="zip-link-popup" class="hide">
+    <div class="inner-modal">
+        <div class="downloading-progress">
+            <div class="spinner"></div>
+            <h1>Creating your file...</h1>
+            <div>This may take a few minutes. Thanks for your patience.</div>
+            <button class="cancel-download-btn" type="button">Cancel</button>
+        </div>
+        <div class="download-complete hide">
+            <div class="done-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>
+            </div>
+            <div>Your file is ready</div>
+            <button class="cancel-download-btn" type="button">OK</button>
+        </div>
+    </div>
+</div>
+<script>
+    $(".cancel-download-btn").click(function(){
+        $("#zip-link-popup").addClass("hide");
+        $("#zip-link-popup .downloading-progress").removeClass("hide");
+        $("#zip-link-popup .download-complete").addClass("hide");
+    });
+</script></div>
+</div>
+<script>
+  $("#toggleContainerPdf li.active:last-child").parents('ul.subfolders').toggle('display');
+  $("#toggleButtonPdf").click(function () {
+    $("#toggleContainerPdf").toggle('display');
+    $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+  });
+</script><div class="prod-nav" id="product-nav">
+  <a target="_self" class="prod-fam-nav" href="https://docs.netapp.com/fr-fr/cloud-manager-family/"><img src="/fr-fr/cloud-manager-app-template/images/left_arrow.png" alt=""><pre>Toute la documentation BlueXP</pre></a>
+</div><div class="sidebar-nav-container" id="mysidebardiv">
+  <ul id="mysidebar" class="nav"><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Docs de modèle d'application"
+      data-li-level="1#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/cloud-manager-app-template/index.html">
+        Docs de modèle d'application
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Notes de mise à jour"
+      data-li-level="1#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/cloud-manager-app-template/whats-new.html">
+        Notes de mise à jour
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Commencez"
+      data-li-level="1" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Commencez</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="En savoir plus sur AppTemplate"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/cloud-manager-app-template/concept-resource-templates.html">
+        En savoir plus sur AppTemplate
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="En savoir plus sur le balisage"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/cloud-manager-app-template/concept-tagging.html">
+        En savoir plus sur le balisage
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Utiliser AppTemplate"
+      data-li-level="1" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Utiliser AppTemplate</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Utilisez des modèles pour standardiser la création de ressources"
+      data-li-level="2" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Utilisez des modèles pour standardiser la création de ressources</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Créez des modèles pour votre entreprise"
+      data-li-level="3#" 
+      class="  active "
+    ><a class="na-navbar-padding" href="/fr-fr/cloud-manager-app-template/task-define-templates.html">
+        Créez des modèles pour votre entreprise
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Vérifier les ressources pour la conformité des modèles"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/cloud-manager-app-template/task-check-template-compliance.html">
+        Vérifier les ressources pour la conformité des modèles
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Exécutez des modèles pour créer des ressources"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/cloud-manager-app-template/task-run-templates.html">
+        Exécutez des modèles pour créer des ressources
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Organisez vos ressources à l'aide de balises"
+      data-li-level="2" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Organisez vos ressources à l'aide de balises</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Gérez les balises de vos ressources"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/cloud-manager-app-template/task-using-tags.html">
+        Gérez les balises de vos ressources
+      </a></li></ul></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Concepts"
+      data-li-level="1" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Concepts</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Éléments de base du modèle"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/cloud-manager-app-template/reference-template-building-blocks.html">
+        Éléments de base du modèle
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Connaissances et support"
+      data-li-level="1" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Connaissances et support</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="S'inscrire pour obtenir de l'aide"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/cloud-manager-app-template/task-support-registration.html">
+        S'inscrire pour obtenir de l'aide
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Obtenez de l'aide"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/cloud-manager-app-template/task-get-help.html">
+        Obtenez de l'aide
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Mentions légales"
+      data-li-level="1#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/cloud-manager-app-template/legal-notices.html">
+        Mentions légales
+      </a></li></ul>
+</div>
+<script>
+  window.onscroll = () => {
+    const value = -40 - (document.body.scrollHeight - (window.innerHeight + document.scrollingElement.scrollTop));
+    
+    document.getElementById("sidebar-height").style.bottom = Math.max(0,value) + "px";
+};
+</script>
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+<script>$("#mysidebar li.active").parents('ul').css("display","block");</script>
+
+
+  </div>
+  
+
+  <div class="ie-content-pane n-doc__component-detail-content n-doc__component-detail-content--show-code">
+    <!-- Begin of page container --><article class="page-content" id="main">
+      <div class="ie-utility">
+  <button id="btn-sidebar-expand" onclick="showSidebar()"><img src="/fr-fr/cloud-manager-app-template/images/expand.png" alt="Développer le panneau de navigation"></button>
+  <div class="ie-menu">
+    <div class="n-breadcrumb">
+      <ul class="n-breadcrumb__list">
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com">docs.netapp.com</a>
+        </li>
+        
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com/us-en/cloud/">Documents dans le cloud</a>
+        </li>
+        
+
+        
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com/fr-fr/cloud-manager-family/">BlueXP</a>
+        </li>
+        
+
+        <li class="n-breadcrumb__list-item">
+          <a href="/fr-fr/cloud-manager-app-template/">AppTemplate</a>
+        </li>
+
+      </ul>
+    </div>
+    <div style="clear: both"></div><!-- Main needs to have height -->
+  </div>
+</div>
+
+      <div class="ie-nmt-disclaimer">
+  <span>
+    <div class="ie-nmt-disclaimer-container">
+      <div class="ie-nmt-disclaimer-icon">
+        <svg class="luci-icon" aria-hidden="true">
+          <use xlink:href="/fr-fr/cloud-manager-app-template/common/svg/sprite.svg#circle-info">
+        </svg>
+      </div>
+      <div class="ie-nmt-disclaimer-content">
+        <span> La version française est une traduction automatique. La version anglaise prévaut sur la française en cas de divergence. </span>
+      </div>
+      <div style="clear:both;"></div>
+    </div>
+  </span>
+</div><div class="n-doc__component-detail-heading-wrap">
+  <h1 class="n-doc__component-detail-heading">Création de modèles d&#8217;application pour votre organisation</h1>
+</div>
+
+
+<p class="page-details">
+  
+    
+    <time datetime="2022-11-17 06:37:33 +0000">11/17/2022</time>
+    
+  
+
+<span>Contributeurs
+</span>
+
+
+</p>
+
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph lead">
+<p>Sélectionnez une ou plusieurs des « actions » fournies par NetApp et créez rapidement un modèle d&#8217;application que votre entreprise peut utiliser pour commencer à optimiser la création des ressources.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="démarrage-rapide">Démarrage rapide</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Pour commencer rapidement, suivez ces étapes ou faites défiler jusqu&#8217;aux sections restantes pour obtenir de plus amples informations.</p>
+</div>
+<div class="ulist">
+<div class="title">&lt;span class=« image »&gt;&lt;img src="<a href="https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png"" class="bare">https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png"</a> alt=« one »&gt;&lt;/span&gt; vérifier les prérequis requis</div>
+<ul>
+<li>
+<p>Avant de pouvoir créer un volume pour un système Cloud Volumes ONTAP, ONTAP sur site ou Azure NetApp Files à l&#8217;aide d&#8217;un modèle, assurez-vous qu&#8217;ils ont accès à un environnement de travail approprié dans lequel le volume sera déployé.</p>
+</li>
+<li>
+<p>Si vous prévoyez d&#8217;ajouter une « action » de service cloud à votre modèle, par exemple <a href="https://docs.netapp.com/us-en/cloud-manager-backup-restore/concept-backup-to-cloud.html" target="_blank" rel="noopener">"La sauvegarde dans le cloud"</a> ou <a href="https://docs.netapp.com/us-en/cloud-manager-data-sense/concept-cloud-compliance.html" target="_blank" rel="noopener">"Sens des données cloud"</a>, assurez-vous que le service est actif et sous licence dans votre environnement.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph quick-margin-para">
+<p>Sélectionnez <strong>Santé &gt; correction</strong>, cliquez sur l&#8217;onglet <strong>Editeur</strong> et sélectionnez les actions que vous utiliserez dans votre modèle.</p>
+</div>
+<div class="paragraph quick-margin-para">
+<p>Suivez les étapes de création et définissez les actions qui seront effectuées par le modèle.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="de-formation">De formation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Lisez les informations suivantes pour vous assurer que votre configuration est prise en charge.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Si vous n&#8217;avez pas encore de connecteur, <a href="https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-connectors.html" target="_blank" rel="noopener">"Voir comment créer des connecteurs"</a> Pour AWS, Azure et GCP.</p>
+</li>
+<li>
+<p>Lorsque vous créez un modèle de volume Cloud Volumes ONTAP, assurez-vous que vous disposez d&#8217;un environnement de travail Cloud Volumes ONTAP disponible pour vos utilisateurs. Découvrez comment lancer un système Cloud Volumes ONTAP dans <a href="https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-deploying-otc-aws.html" target="_blank" rel="noopener">"AWS"</a>, <a href="https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-deploying-otc-azure.html" target="_blank" rel="noopener">"Azure"</a>, ou dans <a href="https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-deploying-gcp.html" target="_blank" rel="noopener">"GCP"</a>.</p>
+</li>
+<li>
+<p>Lorsque vous créez un modèle de volume ONTAP sur site, veillez à disposer d&#8217;un environnement de travail ONTAP sur site. Découvrez comment <a href="https://docs.netapp.com/us-en/cloud-manager-ontap-onprem/task-discovering-ontap.html" target="_blank" rel="noopener">"Découvrez un système ONTAP sur site"</a> Dans BlueXP.</p>
+</li>
+<li>
+<p>Lors de la création d&#8217;un modèle de volume Azure NetApp Files, assurez-vous que vous disposez d&#8217;un environnement de travail Azure NetApp Files disponible pour vos utilisateurs. Découvrez comment <a href="https://docs.netapp.com/us-en/cloud-manager-azure-netapp-files/task-quick-start.html" target="_blank" rel="noopener">"Créer un environnement de travail Azure NetApp Files"</a> Dans BlueXP.</p>
+</li>
+<li>
+<p>Si vous envisagez d&#8217;utiliser Cloud Backup pour sauvegarder un volume dans le modèle, vérifiez que votre environnement a activé Cloud Backup.</p>
+</li>
+<li>
+<p>Si vous envisagez d&#8217;utiliser Cloud Data Sense pour analyser les volumes dans le modèle, assurez-vous que votre environnement a activé Cloud Data SENSE.</p>
+</li>
+<li>
+<p>Si vous prévoyez d&#8217;activer la réplication dans le modèle et que le modèle concerne un volume ONTAP sur site, le cluster ONTAP doit disposer d&#8217;une licence SnapMirror active.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="exemples-de-création-de-ressources-à-laide-de-modèles">Exemples de création de ressources à l&#8217;aide de modèles</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Les modèles de ressources vous permettent de créer de nouveaux volumes ou un nouvel environnement de travail Cloud Volumes ONTAP.</p>
+</div>
+<div class="sect2">
+<h3 id="créez-un-modèle-pour-un-volume-cloud-volumes-ontap">Créez un modèle pour un volume Cloud Volumes ONTAP</h3>
+<div class="paragraph">
+<p>Voir <a href="https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-create-volumes.html" target="_blank" rel="noopener">"Provisionnement de volumes Cloud Volumes ONTAP"</a> Pour plus d&#8217;informations sur les paramètres à compléter dans le modèle de volume Cloud Volumes ONTAP.</p>
+</div>
+<div class="paragraph">
+<p>Pour cet exemple, nous allons créer un modèle nommé « volume CVO pour les bases de données » et inclure les 2 actions suivantes :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Créer un volume Cloud Volumes ONTAP</p>
+<div class="paragraph">
+<p>Définissez le volume pour l&#8217;environnement AWS, configurez-le avec 100 Go de stockage, définissez la règle Snapshot sur « par défaut » et activez l&#8217;efficacité du stockage.</p>
+</div>
+</li>
+<li>
+<p>Activation de Cloud Backup</p>
+<div class="paragraph">
+<p>Créer 30 sauvegardes quotidiennes, 13 sauvegardes hebdomadaires et 3 sauvegardes mensuelles (à l&#8217;aide de la politique de rétention_ de _3 mois).</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Étapes</div>
+<ol class="arabic">
+<li>
+<p>Sélectionnez <strong>Santé &gt; correction</strong>, cliquez sur l&#8217;onglet <strong>modèles</strong> et cliquez sur <strong>Ajouter un nouveau modèle</strong>.</p>
+<div class="paragraph">
+<p>La page <em>Select_a Template</em> s&#8217;affiche.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_create_template_primary_action_cvo.png" alt="Capture d&#8217;écran indiquant comment sélectionner l&#8217;action principale qui sera exécutée à l&#8217;aide de ce modèle."></span></p>
+</div>
+</li>
+<li>
+<p>Sélectionnez <strong>Volume pour Cloud Volumes ONTAP + sauvegarde</strong> comme type de ressource à créer, puis cliquez sur <strong>commencer</strong>.</p>
+<div class="paragraph">
+<p>La page <em>Créer un volume dans Cloud Volumes ONTAP action Definition</em> s&#8217;affiche.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_create_template_define_action_cvo.png" alt="Capture d&#8217;écran montrant un modèle CVO vide que vous devez remplir."></span></p>
+</div>
+</li>
+<li>
+<p><strong>Nom de l&#8217;action</strong> : si vous le souhaitez, entrez un nom d&#8217;action personnalisé au lieu de la valeur par défaut.</p>
+</li>
+<li>
+<p><strong>Contexte:</strong> Entrez le contexte de l&#8217;environnement de travail Cloud Volumes ONTAP; si nécessaire.</p>
+<div class="paragraph">
+<p>Lorsque les utilisateurs lancent le modèle à partir d&#8217;un environnement de travail existant, ces informations sont automatiquement renseignées.</p>
+</div>
+<div class="paragraph">
+<p>Lorsque les utilisateurs lancent le modèle à partir du tableau de bord modèles (pas dans un contexte d&#8217;environnement de travail), ils doivent sélectionner l&#8217;environnement de travail et le SVM où le volume sera créé. C&#8217;est la raison pour laquelle ces champs sont marqués comme étant « modifiables ».</p>
+</div>
+</li>
+<li>
+<p><strong>Détails:</strong> Entrez le nom et la taille du volume.</p>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Champ</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nom du volume</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cliquez dans le champ et sélectionnez l&#8217;une des 5 options. Vous pouvez laisser l&#8217;administrateur entrer un nom en sélectionnant <strong>texte libre</strong>, ou vous pouvez spécifier que le nom du volume doit avoir un préfixe ou un suffixe spécifique, qu&#8217;il <em>contient</em> certains caractères, ou qu&#8217;il suit les règles d&#8217;une expression régulière (regex) que vous saisissez. Par exemple, vous pouvez indiquer que "db" est un préfixe, un suffixe ou un contenu requis ; il faut à l&#8217;utilisateur d&#8217;ajouter des noms de volume tels que "db_vol1", "vol1_db" ou "vol_db_1".</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Taille du volume</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Vous pouvez spécifier une plage de valeurs autorisées ou une taille fixe. Cette valeur est en GB. Pour notre exemple, nous pouvons ajouter une valeur fixe <strong>100</strong>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Étiquettes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Saisissez une paire de noms et de valeurs pour une balise que vous souhaitez associer à ce volume. Par exemple, vous pouvez ajouter "centre de coûts" comme nom de balise et le code de centre de coûts "6655829" comme valeur. Vous pouvez associer plusieurs balises à un volume en ajoutant plusieurs paires de noms de balises et de valeurs.</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><strong>Protection:</strong> Choisissez si les copies Snapshot du volume seront créées en sélectionnant « par défaut » ou une autre règle, ou bien « aucune » si vous ne souhaitez pas créer de copies Snapshot.</p>
+</li>
+<li>
+<p><strong>Profil d&#8217;utilisation :</strong> Choisissez si les fonctionnalités d&#8217;efficacité du stockage NetApp sont appliquées ou non au volume. Cela inclut le provisionnement fin, la déduplication et la compression. Pour notre exemple, vous gardez toujours un niveau d&#8217;efficacité du stockage activé.</p>
+</li>
+<li>
+<p><strong>Disk Type:</strong> Choisissez le fournisseur de stockage cloud et le type de disque. Certaines sélections de disques permettent également de sélectionner une valeur d&#8217;IOPS ou de débit (Mbit/s) minimale et maximale, définissant ainsi une certaine qualité de service (QoS).</p>
+</li>
+<li>
+<p><strong>Options de protocole:</strong> sélectionnez <strong>NFS</strong> ou <strong>SMB</strong> pour définir le protocole du volume. Puis le fournit les détails du protocole.</p>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Champs NFS</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Contrôle d&#8217;accès</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Indiquez si des contrôles d&#8217;accès sont nécessaires pour accéder au volume.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Export policy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Créez une export policy pour définir les clients dans le sous-réseau pouvant accéder au volume.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Version NFS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sélectionnez la version NFS du volume : <em>NFSv3</em> ou <em>NFSv4</em>, ou sélectionnez les deux.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Champs SMB</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nom de partage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cliquez dans le champ et sélectionnez l&#8217;une des 5 options. Vous pouvez laisser l&#8217;administrateur entrer n&#8217;importe quel nom (texte libre) ou vous pouvez spécifier que le nom du partage doit avoir un préfixe ou un suffixe spécifique, qu&#8217;il <em>contient</em> certains caractères, ou qu&#8217;il suit les règles d&#8217;une expression régulière (regex) que vous saisissez.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Autorisations</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sélectionnez le niveau d&#8217;accès à un partage pour les utilisateurs et les groupes (également appelés listes de contrôle d&#8217;accès ou listes de contrôle d&#8217;accès).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Utilisateurs / groupes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Spécifiez les utilisateurs ou groupes Windows locaux ou de domaine, ou les utilisateurs ou groupes UNIX. Si vous spécifiez un nom d&#8217;utilisateur Windows de domaine, vous devez inclure le domaine de l&#8217;utilisateur à l&#8217;aide du format domaine\nom d&#8217;utilisateur.</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><strong>Tiering:</strong> Choisissez la règle de Tiering que vous souhaitez appliquer au volume, ou définissez cette règle sur « aucun » si vous ne souhaitez pas transférer les données inactives de ce volume vers le stockage objet.</p>
+<div class="paragraph">
+<p>Voir <a href="https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/concept-data-tiering.html#volume-tiering-policies" target="_blank" rel="noopener">"règles de tiering des volumes"</a> pour une vue d&#8217;ensemble, et voir <a href="https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-tiering.html" target="_blank" rel="noopener">"Tiering des données inactives vers le stockage objet"</a> afin d&#8217;être certain que votre environnement est configuré pour le tiering.</p>
+</div>
+</li>
+<li>
+<p>Cliquez sur <strong>appliquer</strong> après avoir défini les paramètres requis pour cette action.</p>
+<div class="paragraph">
+<p>Si les valeurs du modèle sont correctement complétées, une coche verte est ajoutée à la case « Créer un volume dans Cloud Volumes ONTAP ».</p>
+</div>
+</li>
+<li>
+<p>Cliquez sur la case <strong>Activer la sauvegarde dans le Cloud sur le volume</strong> et la boîte de dialogue <em>Activer la sauvegarde dans le Cloud sur le volume action Definition</em> s&#8217;affiche pour vous permettre de compléter les détails de la sauvegarde dans le Cloud.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_create_template_add_action.png" alt="Capture d&#8217;écran affichant des actions supplémentaires que vous pouvez ajouter au volume créé."></span></p>
+</div>
+</li>
+<li>
+<p>Sélectionnez la stratégie de sauvegarde * 3 mois Retention* pour créer 30 sauvegardes quotidiennes, 13 hebdomadaires et 3 mois.</p>
+</li>
+<li>
+<p>Sous les champs Environnement de travail et Nom du volume, trois sélections sont disponibles pour indiquer le volume sur lequel la sauvegarde est activée. Voir <a href="reference-template-building-blocks.html#pass-values-between-template-actions">"comment remplir ces champs"</a>.</p>
+</li>
+<li>
+<p>Cliquez sur <strong>appliquer</strong> et la boîte de dialogue sauvegarde dans le cloud est enregistrée.</p>
+</li>
+<li>
+<p>Entrez le nom du modèle <strong>Volume CVO pour les bases de données</strong> (pour cet exemple) dans le coin supérieur gauche.</p>
+</li>
+<li>
+<p>Cliquez sur <strong>Paramètres et dérive</strong> pour fournir une description plus détaillée de sorte que ce modèle puisse être distingué d&#8217;autres modèles similaires, et vous pouvez ainsi activer dérive pour le modèle global, puis cliquez sur <strong>appliquer</strong>.</p>
+<div class="paragraph">
+<p>Dérive permet à BlueXP de surveiller les valeurs codées en dur que vous avez saisies pour les paramètres lors de la création de ce modèle.</p>
+</div>
+</li>
+<li>
+<p>Cliquez sur <strong>Enregistrer le modèle</strong>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Le modèle est créé et vous êtes renvoyé au tableau de bord modèles où apparaît votre nouveau modèle.</p>
+</div>
+<div class="paragraph">
+<p>Voir  to do after you have created the template,ce que vous devez dire à vos utilisateurs sur les modèles.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="créez-un-modèle-pour-un-volume-azure-netapp-files">Créez un modèle pour un volume Azure NetApp Files</h3>
+<div class="paragraph">
+<p>La création d&#8217;un modèle pour un volume Azure NetApp Files se fait de la même manière que la création d&#8217;un modèle pour un volume Cloud Volumes ONTAP.</p>
+</div>
+<div class="paragraph">
+<p>Voir <a href="https://docs.netapp.com/us-en/cloud-manager-azure-netapp-files/task-manage-anf-volumes.html#creating-volumes" target="_blank" rel="noopener">"Provisionnement de volumes Azure NetApp Files"</a> Pour plus d&#8217;informations sur tous les paramètres à compléter dans le modèle de volume ANF.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Étapes</div>
+<ol class="arabic">
+<li>
+<p>Sélectionnez <strong>Santé &gt; correction</strong>, cliquez sur l&#8217;onglet <strong>modèles</strong> et cliquez sur <strong>Ajouter un nouveau modèle</strong>.</p>
+<div class="paragraph">
+<p>La page <em>Select_a Template</em> s&#8217;affiche.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_create_template_primary_action_blank.png" alt="Capture d&#8217;écran indiquant comment sélectionner l&#8217;action principale qui sera exécutée à l&#8217;aide de ce modèle."></span></p>
+</div>
+</li>
+<li>
+<p>Sélectionnez <strong>modèle vierge</strong> et cliquez sur <strong>commencer</strong>.</p>
+</li>
+<li>
+<p>Sélectionnez <strong>Créer un volume dans Azure NetApp Files</strong> comme type de ressource à créer, puis cliquez sur <strong>appliquer</strong>.</p>
+<div class="paragraph">
+<p>La page <em>Créer un volume dans Azure NetApp Files action Definition</em> s&#8217;affiche.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_create_template_define_action_anf.png" alt="Capture d&#8217;écran montrant un modèle ANF vide que vous devez remplir."></span></p>
+</div>
+</li>
+<li>
+<p><strong>Nom de l&#8217;action</strong> : si vous le souhaitez, entrez un nom d&#8217;action personnalisé au lieu de la valeur par défaut.</p>
+</li>
+<li>
+<p><strong>Détails du volume :</strong> Entrez un nom et une taille de volume, et spécifiez éventuellement des balises pour le volume.</p>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Champ</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nom du volume</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cliquez dans le champ et sélectionnez l&#8217;une des 5 options. Vous pouvez laisser l&#8217;administrateur entrer un nom en sélectionnant <strong>texte libre</strong>, ou vous pouvez spécifier que le nom du volume doit avoir un préfixe ou un suffixe spécifique, qu&#8217;il <em>contient</em> certains caractères, ou qu&#8217;il suit les règles d&#8217;une expression régulière (regex) que vous saisissez. Par exemple, vous pouvez indiquer que "db" est un préfixe, un suffixe ou un contenu requis ; il faut à l&#8217;utilisateur d&#8217;ajouter des noms de volume tels que "db_vol1", "vol1_db" ou "vol_db_1".</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Taille du volume</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Vous pouvez spécifier une plage de valeurs autorisées ou une taille fixe. Cette valeur est en GB.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Étiquettes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Saisissez une paire de noms et de valeurs pour une balise que vous souhaitez associer à ce volume. Par exemple, vous pouvez ajouter "centre de coûts" comme nom de balise et le code de centre de coûts "6655829" comme valeur. Vous pouvez associer plusieurs balises à un volume en ajoutant plusieurs paires de noms de balises et de valeurs.</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><strong>Protocole:</strong> sélectionnez <strong>NFSv3</strong>, <strong>NFSv4.1</strong> ou <strong>SMB</strong> pour définir le protocole du volume. Puis le fournit les détails du protocole.</p>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Champs NFS</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Chemin du volume</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sélectionnez l&#8217;une des 5 options. Vous pouvez laisser l&#8217;administrateur entrer n&#8217;importe quel chemin en sélectionnant <strong>texte libre</strong>, ou vous pouvez spécifier que le nom du chemin d&#8217;accès doit avoir un préfixe ou un suffixe spécifique, qu&#8217;il <em>contient</em> certains caractères, ou qu&#8217;il suit les règles d&#8217;une expression régulière (regex) que vous saisissez.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Règles d&#8217;export-policy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Créez une export policy pour définir les clients dans le sous-réseau pouvant accéder au volume.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Champs SMB</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Chemin du volume</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sélectionnez l&#8217;une des 5 options. Vous pouvez laisser l&#8217;administrateur entrer n&#8217;importe quel chemin en sélectionnant <strong>texte libre</strong>, ou vous pouvez spécifier que le nom du chemin d&#8217;accès doit avoir un préfixe ou un suffixe spécifique, qu&#8217;il <em>contient</em> certains caractères, ou qu&#8217;il suit les règles d&#8217;une expression régulière (regex) que vous saisissez.</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><strong>Contexte:</strong> Entrez l&#8217;environnement de travail Azure NetApp Files, les détails d&#8217;un nouveau compte Azure NetApp Files ou d&#8217;un compte existant, et d&#8217;autres détails.</p>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Champ</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Environnement de travail</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lorsque les utilisateurs de l&#8217;administrateur du stockage lancent le modèle à partir d&#8217;un environnement de travail existant, ces informations sont automatiquement renseignées. Lorsque les utilisateurs lancent le modèle à partir du tableau de bord modèles (pas dans un contexte d&#8217;environnement de travail), ils doivent sélectionner l&#8217;environnement de travail dans lequel le volume sera créé.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nom du compte NetApp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Entrez le nom que vous souhaitez utiliser pour le compte.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ID d&#8217;abonnement Azure</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Entrez l&#8217;ID d&#8217;abonnement Azure. Il s&#8217;agit de l&#8217;ID complet dans un format similaire à "2b04f26-7de6-42eb-9234-e2903d7s327".</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Région</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Entrez la région à l&#8217;aide de <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.documents.locationnames?view=azure-dotnet#fields" target="_blank" rel="noopener">"nom de la région interne"</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nom du groupe de ressources</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Entrez le nom du groupe de ressources à utiliser.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nom du pool de capacité</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Entrez le nom d&#8217;un pool de capacité existant.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sous-réseau</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Entrez le vnet et le sous-réseau. Cette valeur inclut le chemin complet, dans un format similaire à "/souscriptions/&lt;ID_abonnement&gt;/resourceGroups/&lt;groupe_ressource&gt;/ fournisseurs/Microsoft.Network/virtualNetworks/&lt;vpc_name&gt;/subnets/&lt;subhet_name&gt;".</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><strong>Copie snapshot :</strong> Entrez l&#8217;ID d&#8217;instantané d&#8217;un instantané de volume existant si vous souhaitez créer ce nouveau volume à l&#8217;aide des caractéristiques d&#8217;un volume existant.</p>
+</li>
+<li>
+<p>Cliquez sur <strong>appliquer</strong> après avoir défini les paramètres requis pour cette action.</p>
+</li>
+<li>
+<p>Saisissez le nom à utiliser pour le modèle en haut à gauche.</p>
+</li>
+<li>
+<p>Cliquez sur <strong>Paramètres et dérive</strong> pour fournir une description plus détaillée de sorte que ce modèle puisse être distingué d&#8217;autres modèles similaires, et vous pouvez ainsi activer dérive pour le modèle global, puis cliquez sur <strong>appliquer</strong>.</p>
+<div class="paragraph">
+<p>Dérive permet à BlueXP de surveiller les valeurs codées en dur que vous avez saisies pour les paramètres lors de la création de ce modèle.</p>
+</div>
+</li>
+<li>
+<p>Cliquez sur <strong>Enregistrer le modèle</strong>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Le modèle est créé et vous êtes renvoyé au tableau de bord modèles où apparaît votre nouveau modèle.</p>
+</div>
+<div class="paragraph">
+<p>Voir  to do after you have created the template,ce que vous devez dire à vos utilisateurs sur les modèles.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="créez-un-modèle-pour-un-volume-ontap-sur-site">Créez un modèle pour un volume ONTAP sur site</h3>
+<div class="paragraph">
+<p>Voir <a href="https://docs.netapp.com/us-en/cloud-manager-ontap-onprem/task-provisioning-ontap.html#creating-volumes-for-ontap-clusters" target="_blank" rel="noopener">"Comment provisionner des volumes ONTAP sur site"</a> Pour en savoir plus sur les paramètres à compléter dans le modèle de volume ONTAP sur site.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Étapes</div>
+<ol class="arabic">
+<li>
+<p>Sélectionnez <strong>Santé &gt; correction</strong>, cliquez sur l&#8217;onglet <strong>modèles</strong> et cliquez sur <strong>Ajouter un nouveau modèle</strong>.</p>
+<div class="paragraph">
+<p>La page <em>Select_a Template</em> s&#8217;affiche.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_create_template_primary_action_blank.png" alt="Capture d&#8217;écran indiquant comment sélectionner l&#8217;action principale qui sera exécutée à l&#8217;aide de ce modèle."></span></p>
+</div>
+</li>
+<li>
+<p>Sélectionnez <strong>modèle vierge</strong> et cliquez sur <strong>commencer</strong>.</p>
+<div class="paragraph">
+<p>La page <em>Ajouter une nouvelle action</em> s&#8217;affiche.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_create_template_primary_action_onprem.png" alt="Capture d&#8217;écran indiquant comment sélectionner l&#8217;action principale à partir de la page Ajouter une nouvelle action."></span></p>
+</div>
+</li>
+<li>
+<p>Sélectionnez <strong>Créer un volume dans ONTAP</strong> sur site comme type de ressource à créer, puis cliquez sur <strong>appliquer</strong>.</p>
+<div class="paragraph">
+<p>La page <em>Create Volume in on-local ONTAP action Definition</em> s&#8217;affiche.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_create_template_define_action_onprem.png" alt="Capture d&#8217;écran montrant un modèle ONTAP sur site vierge que vous devez remplir."></span></p>
+</div>
+</li>
+<li>
+<p><strong>Nom de l&#8217;action</strong> : si vous le souhaitez, entrez un nom d&#8217;action personnalisé au lieu de la valeur par défaut.</p>
+</li>
+<li>
+<p><strong>Contexte:</strong> Entrez le contexte de l&#8217;environnement de travail ONTAP sur site, si nécessaire.</p>
+<div class="paragraph">
+<p>Lorsque les utilisateurs lancent le modèle à partir d&#8217;un environnement de travail existant, ces informations sont automatiquement renseignées.</p>
+</div>
+<div class="paragraph">
+<p>Lorsque les utilisateurs lancent le modèle à partir du tableau de bord modèles (pas dans un contexte d&#8217;environnement de travail), ils doivent sélectionner l&#8217;environnement de travail, le SVM et l&#8217;agrégat dans lequel le volume sera créé.</p>
+</div>
+</li>
+<li>
+<p><strong>Détails:</strong> Entrez le nom et la taille du volume.</p>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Champ</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nom du volume</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cliquez dans le champ et sélectionnez l&#8217;une des 5 options. Vous pouvez laisser l&#8217;administrateur entrer un nom en sélectionnant <strong>texte libre</strong>, ou vous pouvez spécifier que le nom du volume doit avoir un préfixe ou un suffixe spécifique, qu&#8217;il <em>contient</em> certains caractères, ou qu&#8217;il suit les règles d&#8217;une expression régulière (regex) que vous saisissez. Par exemple, vous pouvez indiquer que "db" est un préfixe, un suffixe ou un contenu requis ; il faut à l&#8217;utilisateur d&#8217;ajouter des noms de volume tels que "db_vol1", "vol1_db" ou "vol_db_1".</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Taille du volume</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Vous pouvez spécifier une plage de valeurs autorisées ou une taille fixe. Cette valeur est en GB. Pour notre exemple, nous pouvons ajouter une valeur fixe <strong>100</strong>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Étiquettes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Saisissez une paire de noms et de valeurs pour une balise que vous souhaitez associer à ce volume. Par exemple, vous pouvez ajouter "centre de coûts" comme nom de balise et le code de centre de coûts "6655829" comme valeur. Vous pouvez associer plusieurs balises à un volume en ajoutant plusieurs paires de noms de balises et de valeurs.</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><strong>Protection:</strong> Choisissez si les copies Snapshot du volume seront créées en sélectionnant « par défaut » ou une autre règle, ou bien « aucune » si vous ne souhaitez pas créer de copies Snapshot.</p>
+</li>
+<li>
+<p><strong>Profil d&#8217;utilisation :</strong> Choisissez si les fonctionnalités d&#8217;efficacité du stockage NetApp sont appliquées ou non au volume. Cela inclut le provisionnement fin, la déduplication et la compression.</p>
+</li>
+<li>
+<p><strong>Options de protocole:</strong> sélectionnez <strong>NFS</strong> ou <strong>SMB</strong> pour définir le protocole du volume. Puis le fournit les détails du protocole.</p>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Champs NFS</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Contrôle d&#8217;accès</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Indiquez si des contrôles d&#8217;accès sont nécessaires pour accéder au volume.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Export policy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Créez une export policy pour définir les clients dans le sous-réseau pouvant accéder au volume.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Version NFS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sélectionnez la version NFS du volume : <em>NFSv3</em> ou <em>NFSv4</em>, ou sélectionnez les deux.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Champs SMB</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nom de partage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cliquez dans le champ et sélectionnez l&#8217;une des 5 options. Vous pouvez laisser l&#8217;administrateur entrer n&#8217;importe quel nom (texte libre) ou vous pouvez spécifier que le nom du partage doit avoir un préfixe ou un suffixe spécifique, qu&#8217;il <em>contient</em> certains caractères, ou qu&#8217;il suit les règles d&#8217;une expression régulière (regex) que vous saisissez.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Autorisations</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sélectionnez le niveau d&#8217;accès à un partage pour les utilisateurs et les groupes (également appelés listes de contrôle d&#8217;accès ou listes de contrôle d&#8217;accès).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Utilisateurs / groupes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Spécifiez les utilisateurs ou groupes Windows locaux ou de domaine, ou les utilisateurs ou groupes UNIX. Si vous spécifiez un nom d&#8217;utilisateur Windows de domaine, vous devez inclure le domaine de l&#8217;utilisateur à l&#8217;aide du format domaine\nom d&#8217;utilisateur.</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>Cliquez sur <strong>appliquer</strong> après avoir défini les paramètres requis pour cette action.</p>
+<div class="paragraph">
+<p>Si les valeurs du modèle sont correctement terminées, une coche verte est ajoutée à la case « Créer un volume dans ONTAP sur site ».</p>
+</div>
+</li>
+<li>
+<p>Entrez le nom du modèle dans le coin supérieur gauche.</p>
+</li>
+<li>
+<p>Cliquez sur <strong>Paramètres et dérive</strong> pour fournir une description plus détaillée de sorte que ce modèle puisse être distingué d&#8217;autres modèles similaires, et vous pouvez ainsi activer dérive pour le modèle global, puis cliquez sur <strong>appliquer</strong>.</p>
+<div class="paragraph">
+<p>Dérive permet à BlueXP de surveiller les valeurs codées en dur que vous avez saisies pour les paramètres lors de la création de ce modèle.</p>
+</div>
+</li>
+<li>
+<p>Cliquez sur <strong>Enregistrer le modèle</strong>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Le modèle est créé et vous êtes renvoyé au tableau de bord des modèles où apparaît votre nouveau modèle.</p>
+</div>
+<div class="paragraph">
+<p>Voir  to do after you have created the template,ce que vous devez dire à vos utilisateurs sur les modèles.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="créez-un-modèle-pour-un-environnement-de-travail-cloud-volumes-ontap">Créez un modèle pour un environnement de travail Cloud Volumes ONTAP</h3>
+<div class="paragraph">
+<p>Vous pouvez créer un environnement de travail Cloud Volumes ONTAP à un seul nœud ou haute disponibilité à l&#8217;aide de modèles.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/cloud-manager-app-template/images/note.svg" alt="Note">
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Actuellement, ce support est exclusivement réservé aux environnements AWS.</p>
+</li>
+<li>
+<p>Ce modèle ne crée pas le premier volume dans l&#8217;environnement de travail. Vous devez ajouter une action « Créer un volume dans Cloud Volumes ONTAP » dans le modèle pour créer le volume.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Voir <a href="https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-deploying-otc-aws.html#launching-a-single-node-cloud-volumes-ontap-system-in-aws" target="_blank" rel="noopener">"Comment lancer un système Cloud Volumes ONTAP à un seul nœud dans AWS"</a> ou un <a href="https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-deploying-otc-aws.html#launching-a-cloud-volumes-ontap-ha-pair-in-aws" target="_blank" rel="noopener">"Paire HA Cloud Volumes ONTAP dans AWS"</a> pour les prérequis qui doivent être en place et pour obtenir des détails sur tous les paramètres que vous devrez définir dans ce modèle.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Étapes</div>
+<ol class="arabic">
+<li>
+<p>Sélectionnez <strong>Santé &gt; correction</strong>, cliquez sur l&#8217;onglet <strong>modèles</strong> et cliquez sur <strong>Ajouter un nouveau modèle</strong>.</p>
+<div class="paragraph">
+<p>La page <em>Select_a Template</em> s&#8217;affiche.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_create_template_primary_action_blank.png" alt="Capture d&#8217;écran indiquant comment sélectionner l&#8217;action principale qui sera exécutée à l&#8217;aide de ce modèle."></span></p>
+</div>
+</li>
+<li>
+<p>Sélectionnez <strong>modèle vierge</strong> et cliquez sur <strong>commencer</strong>.</p>
+<div class="paragraph">
+<p>La page <em>Ajouter une nouvelle action</em> s&#8217;affiche.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_create_template_cvo_env_aws.png" alt="Capture d&#8217;écran indiquant comment sélectionner l&#8217;action principale à partir de la page Ajouter une nouvelle action."></span></p>
+</div>
+</li>
+<li>
+<p>Sélectionnez <strong>Créer un environnement de travail dans AWS (nœud unique)</strong> ou <strong>Créer un environnement de travail dans AWS (haute disponibilité)</strong> comme type de ressource à créer, puis cliquez sur <strong>appliquer</strong>.</p>
+<div class="paragraph">
+<p>Pour cet exemple, la page <em>Create Working Environment in AWS (nœud unique)</em> s&#8217;affiche.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_create_template_cvo_env_aws1.png" alt="Capture d&#8217;écran montrant un modèle d&#8217;environnement de travail Cloud Volumes ONTAP vierge à remplir."></span></p>
+</div>
+</li>
+<li>
+<p><strong>Nom de l&#8217;action</strong> : si vous le souhaitez, entrez un nom d&#8217;action personnalisé au lieu de la valeur par défaut.</p>
+</li>
+<li>
+<p><strong>Détails et informations d&#8217;identification</strong> : sélectionnez les informations d&#8217;identification AWS à utiliser, entrez un nom d&#8217;environnement de travail et ajoutez des balises, si nécessaire.</p>
+<div class="paragraph">
+<p>Certains champs de cette page sont explicites. Le tableau suivant décrit les champs pour lesquels vous pouvez avoir besoin de conseils :</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Champ</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Informations d&#8217;identification</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Il s&#8217;agit des informations d&#8217;identification du compte d&#8217;administration du cluster Cloud Volumes ONTAP. Vous pouvez utiliser ces identifiants pour vous connecter à Cloud Volumes ONTAP via ONTAP System Manager ou son interface de ligne de commandes.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nom de l&#8217;environnement de travail</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BlueXP utilise le nom de l&#8217;environnement de travail pour nommer à la fois le système Cloud Volumes ONTAP et l&#8217;instance Amazon EC2. Il utilise également le nom comme préfixe pour le groupe de sécurité prédéfini, si vous sélectionnez cette option. Cliquez dans le champ et sélectionnez l&#8217;une des 5 options. Vous pouvez laisser l&#8217;administrateur entrer n&#8217;importe quel nom en sélectionnant <strong>texte libre</strong>, ou vous pouvez spécifier que le nom de l&#8217;environnement de travail doit avoir un certain préfixe ou suffixe, qu&#8217;il <em>contient</em> certains caractères, ou qu&#8217;il suit les règles d&#8217;une expression régulière (regex) que vous saisissez.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Étiquettes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Les étiquettes AWS sont des métadonnées pour vos ressources AWS. BlueXP ajoute les balises à l&#8217;instance Cloud Volumes ONTAP et à chaque ressource AWS associée à l&#8217;instance. Pour plus d&#8217;informations sur les étiquettes, reportez-vous à la section <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html" target="_blank" rel="noopener">"Documentation AWS : balisage des ressources Amazon EC2"</a>.</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><strong>Localisation et connectivité</strong> : saisissez les informations de réseau que vous avez enregistrées dans le <a href="https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-planning-your-config.html#aws-network-information-worksheet" target="_blank" rel="noopener">"Fiche AWS"</a>. Il s&#8217;agit notamment de la région AWS, du VPC, du sous-réseau et du groupe de sécurité.</p>
+<div class="paragraph">
+<p>Si vous disposez d&#8217;un poste externe AWS, vous pouvez déployer un système Cloud Volumes ONTAP à un seul nœud dans cet envoi en sélectionnant le VPC Outpost. L&#8217;expérience est la même que tout autre VPC qui réside dans AWS.</p>
+</div>
+</li>
+<li>
+<p><strong>Méthode d&#8217;authentification</strong> : sélectionnez la méthode d&#8217;authentification SSH que vous souhaitez utiliser, soit un mot de passe, soit une paire de clés.</p>
+</li>
+<li>
+<p><strong>Data Encryption</strong> : choisissez pas de cryptage de données ou de cryptage géré par AWS.</p>
+<div class="paragraph">
+<p>Pour le chiffrement géré par AWS, vous pouvez choisir une autre clé maître client (CMK) dans votre compte ou un autre compte AWS.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-setting-up-kms.html" target="_blank" rel="noopener">"Découvrez comment configurer le KMS AWS pour Cloud Volumes ONTAP"</a>.</p>
+</div>
+</li>
+<li>
+<p><strong>Méthode de charge</strong> : spécifiez l&#8217;option de charge que vous souhaitez utiliser avec ce système.</p>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/concept-licensing.html" target="_blank" rel="noopener">"Découvrez ces méthodes de charge"</a>.</p>
+</div>
+</li>
+<li>
+<p><strong>Compte sur le site de support NetApp</strong> : sélectionnez un compte sur le site de support NetApp.</p>
+</li>
+<li>
+<p><strong>Packages préconfigurés</strong> : sélectionnez l&#8217;un des quatre packages préconfigurés qui déterminera plusieurs facteurs pour les volumes créés dans l&#8217;environnement de travail.</p>
+</li>
+<li>
+<p><strong>Configuration SMB</strong> : si vous prévoyez de déployer des volumes à l&#8217;aide de SMB dans cet environnement de travail, vous pouvez configurer un serveur CIFS et les éléments de configuration associés.</p>
+</li>
+<li>
+<p>Cliquez sur <strong>appliquer</strong> après avoir défini les paramètres requis pour cette action.</p>
+<div class="paragraph">
+<p>Si les valeurs du modèle sont correctement terminées, une coche verte est ajoutée à la case « Créer un environnement de travail dans AWS (nœud unique) ».</p>
+</div>
+</li>
+<li>
+<p>Vous pouvez ajouter une autre action dans ce modèle pour créer un volume pour cet environnement de travail. Si c&#8217;est le cas, cliquez sur <span class="image"><img src="./media/button_plus_sign_round.png" alt="bouton plus"></span> et ajoutez cette action. Découvrez comment  a template for a Cloud Volumes ONTAP volume,Créez un modèle pour un volume Cloud Volumes ONTAP pour plus d&#8217;informations.</p>
+</li>
+<li>
+<p>Entrez le nom du modèle dans le coin supérieur gauche.</p>
+</li>
+<li>
+<p>Cliquez sur <strong>Paramètres et dérive</strong> pour fournir une description plus détaillée de sorte que ce modèle puisse être distingué d&#8217;autres modèles similaires, et vous pouvez ainsi activer dérive pour le modèle global, puis cliquez sur <strong>appliquer</strong>.</p>
+<div class="paragraph">
+<p>Dérive permet à BlueXP de surveiller les valeurs codées en dur que vous avez saisies pour les paramètres lors de la création de ce modèle.</p>
+</div>
+</li>
+<li>
+<p>Cliquez sur <strong>Enregistrer le modèle</strong>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Le modèle est créé et vous êtes renvoyé au tableau de bord des modèles où apparaît votre nouveau modèle.</p>
+</div>
+<div class="paragraph">
+<p>Voir  to do after you have created the template,ce que vous devez dire à vos utilisateurs sur les modèles.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="exemples-de-recherche-de-ressources-existantes-à-laide-de-modèles">Exemples de recherche de ressources existantes à l&#8217;aide de modèles</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>À l&#8217;aide de l&#8217;action <em>Find Existing Resources</em>, vous pouvez trouver des environnements de travail spécifiques ou trouver des volumes existants en fournissant une variété de filtres afin que vous puissiez limiter votre recherche aux ressources qui vous intéressent. Une fois les ressources correctes trouvent, vous pouvez ajouter des volumes à un environnement de travail ou activer un service cloud sur les volumes résultants.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/cloud-manager-app-template/images/note.svg" alt="Note">
+</td>
+<td class="content">
+Pour l&#8217;instant, des volumes sont disponibles dans les systèmes Cloud Volumes ONTAP, ONTAP sur site et Azure NetApp Files. Vous pouvez également activer Cloud Backup sur Cloud Volumes ONTAP et sur les volumes ONTAP sur site. D&#8217;autres ressources et services seront disponibles ultérieurement.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="rechercher-des-volumes-existants-et-activer-un-service-cloud">Rechercher des volumes existants et activer un service cloud</h3>
+<div class="paragraph">
+<p>La fonctionnalité actuelle <em>Find Existing Resources</em> action vous permet d&#8217;identifier les volumes dans les environnements de travail ONTAP sur site et Cloud Volumes ONTAP qui n&#8217;ont pas encore de fonction Cloud Backup ou Cloud Data Sense. Lorsque vous activez Cloud Backup sur des volumes spécifiques, cette action définit également la règle de sauvegarde que vous avez configurée comme règle par défaut pour cet environnement de travail. Ainsi, tous les volumes futurs de ces environnements de travail peuvent utiliser la même stratégie de sauvegarde.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Étapes</div>
+<ol class="arabic">
+<li>
+<p>Sélectionnez <strong>Santé &gt; correction</strong>, cliquez sur l&#8217;onglet <strong>modèles</strong> et cliquez sur <strong>Ajouter un nouveau modèle</strong>.</p>
+<div class="paragraph">
+<p>La page <em>Select_a Template</em> s&#8217;affiche.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_create_template_primary_action_blank.png" alt="Capture d&#8217;écran indiquant comment sélectionner l&#8217;action principale qui sera exécutée à l&#8217;aide de ce modèle."></span></p>
+</div>
+</li>
+<li>
+<p>Sélectionnez <strong>modèle vierge</strong> et cliquez sur <strong>commencer</strong>.</p>
+<div class="paragraph">
+<p>La page <em>Ajouter une nouvelle action</em> s&#8217;affiche.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_create_template_find_resource_action.png" alt="Capture d&#8217;écran indiquant comment sélectionner l&#8217;action Rechercher des ressources existantes dans la page Ajouter une nouvelle action."></span></p>
+</div>
+</li>
+<li>
+<p>Sélectionnez <strong>Rechercher les ressources existantes</strong> comme type d&#8217;action à définir, puis cliquez sur <strong>appliquer</strong>.</p>
+<div class="paragraph">
+<p>La page <em>Rechercher des ressources existantes action Definition</em> s&#8217;affiche.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_define_find_resource_action1.png" alt="Capture d&#8217;écran indiquant un modèle de recherche de ressources existantes vierge que vous devez remplir."></span></p>
+</div>
+</li>
+<li>
+<p><strong>Nom de l&#8217;action</strong> : saisissez un nom d&#8217;action personnalisé au lieu de la valeur par défaut. Par exemple, « recherchez de grands volumes sur le cluster ABC et activez la sauvegarde ».</p>
+</li>
+<li>
+<p><strong>Type de ressource :</strong> sélectionnez le type de ressource que vous souhaitez trouver. Dans ce cas, vous pouvez sélectionner <strong>volumes dans Cloud Volumes ONTAP</strong>.</p>
+<div class="paragraph">
+<p>Il s&#8217;agit de la seule entrée requise pour cette action. Cliquez sur <strong>Continuer</strong> maintenant et vous recevrez une liste de tous les volumes sur tous les systèmes Cloud Volumes ONTAP de votre environnement.</p>
+</div>
+<div class="paragraph">
+<p>Nous vous recommandons plutôt de compléter quelques filtres afin de réduire le nombre de résultats (dans ce cas, les volumes) pour lesquels vous appliquerez l&#8217;action Cloud Backup.</p>
+</div>
+</li>
+<li>
+<p>Dans la zone <em>context</em>, vous pouvez sélectionner un environnement de travail spécifique et d&#8217;autres détails sur cet environnement de travail.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_define_find_resource_filter_context.png" alt="Capture d&#8217;écran affichant les filtres de contexte que vous pouvez appliquer au modèle Rechercher des ressources existantes."></span></p>
+</div>
+</li>
+<li>
+<p>Dans la zone <em>Details</em>, vous pouvez sélectionner le nom du volume, la plage de taille du volume et toutes les balises affectées aux volumes.</p>
+<div class="paragraph">
+<p>Pour le nom du volume, cliquez dans le champ et sélectionnez l&#8217;une des 5 options. Vous pouvez laisser l&#8217;administrateur entrer un nom en sélectionnant <strong>texte libre</strong>, ou vous pouvez spécifier que le nom du volume doit avoir un préfixe ou un suffixe spécifique, qu&#8217;il <em>contient</em> certains caractères, ou qu&#8217;il suit les règles d&#8217;une expression régulière (regex) que vous saisissez.</p>
+</div>
+<div class="paragraph">
+<p>Pour la taille de volume, vous pouvez spécifier une plage ; par exemple, tous les volumes entre 100 Gio et 500 Gio.</p>
+</div>
+<div class="paragraph">
+<p>Pour les balises, vous pouvez affiner davantage la recherche de sorte que les résultats n&#8217;affichent que les volumes avec certaines paires clé/valeur de balise.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_define_find_resource_filter_details.png" alt="Capture d&#8217;écran affichant les filtres Détails que vous pouvez appliquer au modèle Rechercher des ressources existantes."></span></p>
+</div>
+</li>
+<li>
+<p>Cliquez sur <strong>Continuer</strong> et la page se met à jour pour afficher les critères de recherche que vous avez définis dans le modèle.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_define_find_resource_search_criteria.png" alt="Capture d&#8217;écran affichant les critères de recherche que vous avez définis pour le modèle Rechercher des ressources existantes."></span></p>
+</div>
+</li>
+<li>
+<p>Cliquez sur <strong>Tester vos critères de recherche maintenant</strong> pour voir les résultats actuels.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Si les résultats ne correspondent pas à vos attentes, cliquez sur <span class="image"><img src="./media/screenshot_edit_icon.gif" alt="modifier l&#8217;icône du crayon"></span> À côté de <em>Search Criteria</em> et affinez votre recherche plus loin.</p>
+</li>
+<li>
+<p>Lorsque les résultats sont bons, cliquez sur <strong>Done</strong>.</p>
+<div class="paragraph">
+<p>L&#8217;action <em>Find Existing Resources</em> terminée s&#8217;affiche dans la fenêtre de l&#8217;éditeur.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cliquez sur le signe plus pour ajouter une autre action, sélectionnez <strong>Activer la sauvegarde dans le Cloud sur le volume</strong>, puis cliquez sur <strong>appliquer</strong>.</p>
+<div class="paragraph">
+<p>L&#8217;action <em>Activer la sauvegarde dans le Cloud sur le volume</em> est ajoutée à la fenêtre.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_template_add_backup_action.png" alt="Capture d&#8217;écran indiquant les étapes à suivre pour ajouter une action Cloud Backup à votre modèle."></span></p>
+</div>
+</li>
+<li>
+<p>Vous pouvez maintenant définir les critères de sauvegarde comme décrit dans  Backup functionality to a volume,Ajout de la fonctionnalité de sauvegarde à un volume De sorte que le modèle applique la stratégie de sauvegarde correcte aux volumes que vous sélectionnez à partir de l&#8217;action <em>Find Existing Resources</em>.</p>
+</li>
+<li>
+<p>Cliquez sur <strong>appliquer</strong> pour enregistrer la personnalisation que vous avez effectuée dans l&#8217;action de sauvegarde, puis cliquez sur <strong>Enregistrer le modèle</strong> lorsque vous avez terminé.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Le modèle est créé et vous êtes renvoyé au tableau de bord des modèles où apparaît votre nouveau modèle.</p>
+</div>
+<div class="paragraph">
+<p>Voir  to do after you have created the template,ce que vous devez dire à vos utilisateurs sur les modèles.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="identifier-les-environnements-de-travail-existants">Identifier les environnements de travail existants</h3>
+<div class="paragraph">
+<p>À l&#8217;aide de l&#8217;action <em>Find Existing Resources</em>, vous pouvez trouver l&#8217;environnement de travail, puis utiliser d&#8217;autres actions de modèle, telles que la création d&#8217;un volume, pour effectuer facilement des actions sur l&#8217;environnement de travail existant.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Étapes</div>
+<ol class="arabic">
+<li>
+<p>Sélectionnez <strong>Santé &gt; correction</strong>, cliquez sur l&#8217;onglet <strong>modèles</strong> et cliquez sur <strong>Ajouter un nouveau modèle</strong>.</p>
+<div class="paragraph">
+<p>La page <em>Select_a Template</em> s&#8217;affiche.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_create_template_primary_action_blank.png" alt="Capture d&#8217;écran indiquant comment sélectionner l&#8217;action principale qui sera exécutée à l&#8217;aide de ce modèle."></span></p>
+</div>
+</li>
+<li>
+<p>Sélectionnez <strong>modèle vierge</strong> et cliquez sur <strong>commencer</strong>.</p>
+<div class="paragraph">
+<p>La page <em>Ajouter une nouvelle action</em> s&#8217;affiche.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_create_template_find_resource_action.png" alt="Capture d&#8217;écran indiquant comment sélectionner l&#8217;action Rechercher des ressources existantes dans la page Ajouter une nouvelle action."></span></p>
+</div>
+</li>
+<li>
+<p>Sélectionnez <strong>Rechercher les ressources existantes</strong> comme type d&#8217;action à définir, puis cliquez sur <strong>appliquer</strong>.</p>
+<div class="paragraph">
+<p>La page <em>Rechercher des ressources existantes action Definition</em> s&#8217;affiche.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_define_find_work_env.png" alt="Capture d&#8217;écran indiquant un modèle de recherche de ressources existantes vierge que vous devez remplir."></span></p>
+</div>
+</li>
+<li>
+<p><strong>Nom de l&#8217;action</strong> : saisissez un nom d&#8217;action personnalisé au lieu de la valeur par défaut. Par exemple, « trouver des environnements de travail qui incluent Dallas ».</p>
+</li>
+<li>
+<p><strong>Type de ressource :</strong> sélectionnez le type de ressource que vous souhaitez trouver. Dans ce cas, vous sélectionnez <strong>environnements de travail</strong>.</p>
+<div class="paragraph">
+<p>Il s&#8217;agit de la seule entrée requise pour cette action. Vous pouvez cliquer sur <strong>Continuer</strong> maintenant et vous recevrez une liste de tous les environnements de travail de votre environnement.</p>
+</div>
+<div class="paragraph">
+<p>Il est recommandé de remplir quelques filtres afin de réduire le nombre de résultats (dans ce cas, les environnements de travail).</p>
+</div>
+</li>
+<li>
+<p>Après avoir défini quelques filtres dans la zone <em>Details</em>, vous pouvez sélectionner un environnement de travail spécifique.</p>
+</li>
+<li>
+<p>Cliquez sur <strong>Continuer</strong> pour enregistrer vos paramètres, puis cliquez sur <strong>terminé</strong>.</p>
+</li>
+<li>
+<p>Entrez le nom du modèle dans le coin supérieur gauche, puis cliquez sur <strong>Enregistrer le modèle</strong></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Le modèle est créé et vous êtes renvoyé au tableau de bord des modèles où apparaît votre nouveau modèle.</p>
+</div>
+<div class="paragraph">
+<p>Voir  to do after you have created the template,ce que vous devez dire à vos utilisateurs sur les modèles.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="exemples-dactivation-de-services-à-laide-de-modèles">Exemples d&#8217;activation de services à l&#8217;aide de modèles</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Les modèles de service vous permettent d&#8217;activer les services Cloud Backup, Cloud Data Sense ou Replication (SnapMirror) sur un nouveau volume.</p>
+</div>
+<div class="sect2">
+<h3 id="ajouter-la-fonctionnalité-de-sauvegarde-à-un-volume">Ajouter la fonctionnalité de sauvegarde à un volume</h3>
+<div class="paragraph">
+<p>Lors de la création d&#8217;un modèle de volume, vous pouvez ajouter le modèle que vous souhaitez créer régulièrement des sauvegardes du volume à l&#8217;aide de <a href="https://docs.netapp.com/us-en/cloud-manager-backup-restore/concept-backup-to-cloud.html" target="_blank" rel="noopener">"La sauvegarde dans le cloud"</a> services.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/cloud-manager-app-template/images/tip.svg" alt="Astuce">
+</td>
+<td class="content">
+Cette action ne s&#8217;applique pas aux volumes Azure NetApp Files.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_template_backup.png" alt="Capture d&#8217;écran de la page pour activer la fonctionnalité de sauvegarde de vos volumes."></span></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Stratégie</strong> : sélectionnez la stratégie de sauvegarde que vous souhaitez utiliser.</p>
+</li>
+<li>
+<p><strong>Context</strong> : par défaut, les variables sont remplies pour l&#8217;environnement de travail, la machine virtuelle de stockage et le volume pour indiquer que vous allez créer des sauvegardes pour le volume créé précédemment dans ce même modèle. Donc, si c&#8217;est ce que vous voulez faire, vous êtes tous ensemble.</p>
+<div class="paragraph">
+<p>Si vous souhaitez créer des sauvegardes pour un autre volume, vous pouvez entrer ces informations manuellement. Découvrez comment <a href="reference-template-building-blocks.html#pass-values-between-template-actions">"Renseignez les champs de contexte"</a> pour indiquer un autre volume.</p>
+</div>
+</li>
+<li>
+<p>Cliquez sur <strong>appliquer</strong> pour enregistrer vos modifications.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="ajouter-une-fonctionnalité-de-détection-des-données-à-un-volume">Ajouter une fonctionnalité de détection des données à un volume</h3>
+<div class="paragraph">
+<p>Lors de la création d&#8217;un modèle de volume, vous pouvez ajouter le modèle que vous voulez analyser le volume pour vérifier la conformité et la classification à l&#8217;aide du <a href="https://docs.netapp.com/us-en/cloud-manager-data-sense/concept-cloud-compliance.html" target="_blank" rel="noopener">"Sens des données cloud"</a> services.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_template_data_sense.png" alt="Capture d&#8217;écran de la page pour activer la fonctionnalité de numérisation de vos volumes."></span></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Context</strong>: Par défaut, les variables sont remplies pour l&#8217;environnement de travail, le nom du volume, l&#8217;UUID du volume, le chemin du volume et le protocole pour indiquer que vous allez analyser les données pour le volume créé précédemment dans ce même modèle. Donc, si c&#8217;est ce que vous voulez faire, vous êtes tous ensemble.</p>
+<div class="paragraph">
+<p>Si vous souhaitez analyser des données pour un autre volume, vous pouvez saisir ces informations manuellement. Découvrez comment <a href="reference-template-building-blocks.html#pass-values-between-template-actions">"Renseignez les champs de contexte"</a> pour indiquer un autre volume.</p>
+</div>
+</li>
+<li>
+<p>Cliquez sur <strong>appliquer</strong> pour enregistrer vos modifications.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="ajouter-la-fonctionnalité-de-réplication-à-un-volume">Ajouter la fonctionnalité de réplication à un volume</h3>
+<div class="paragraph">
+<p>Lors de la création d&#8217;un modèle de volume, vous pouvez ajouter le modèle de réplication des données du volume vers un autre volume à l&#8217;aide de l' <a href="https://docs.netapp.com/us-en/cloud-manager-replication/concept-replication.html" target="_blank" rel="noopener">"La réplication"</a> services. Vous pouvez répliquer des données vers un cluster Cloud Volumes ONTAP ou vers un cluster ONTAP sur site.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/cloud-manager-app-template/images/tip.svg" alt="Astuce">
+</td>
+<td class="content">
+Cette action ne s&#8217;applique pas aux volumes Azure NetApp Files.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>La fonction de réplication se compose de trois parties : la sélection du volume source, la sélection du volume de destination et la définition des paramètres de réplication. Chaque section est décrite ci-dessous.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Détails de la source</strong> : saisissez les détails du volume source que vous souhaitez répliquer :</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_template_replication_source.png" alt="Capture d&#8217;écran de la page pour définir l&#8217;emplacement du volume source de réplication."></span></p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Par défaut, les trois premières variables sont remplies pour l&#8217;environnement de travail, la machine virtuelle de stockage et le volume afin de indiquer que vous allez répliquer le volume créé précédemment dans ce même modèle. Donc, si c&#8217;est ce que vous voulez faire, vous êtes tous ensemble.</p>
+<div class="paragraph">
+<p>Si vous souhaitez répliquer un autre volume, vous pouvez saisir ces informations manuellement. Découvrez comment <a href="reference-template-building-blocks.html#pass-values-between-template-actions">"Renseignez les champs de contexte"</a> pour indiquer un autre volume.</p>
+</div>
+</li>
+<li>
+<p>La réplication nécessite que les environnements de travail source et destination soient connectés via leurs LIFs intercluster. Entrer l&#8217;adresse IP LIF intercluster pour l&#8217;environnement de travail source.</p>
+<div class="paragraph">
+<p>Pour obtenir ces informations : double-cliquez sur l&#8217;environnement de travail, cliquez sur l&#8217;icône du menu, puis cliquez sur informations.</p>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p><strong>Détails de destination</strong> : saisissez les détails du volume de destination qui sera créé par l&#8217;opération de réplication :</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_template_replication_dest.png" alt="Capture d&#8217;écran de la page pour définir l&#8217;emplacement du volume de destination de réplication."></span></p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Sélectionnez l&#8217;environnement de travail dans lequel le volume sera créé.</p>
+</li>
+<li>
+<p>Sélectionnez la VM de stockage sur laquelle le volume sera stocké.</p>
+</li>
+<li>
+<p>Lors de la réplication d&#8217;un volume vers un cluster Cloud Volumes ONTAP (pas vers un cluster ONTAP sur site), vous devez spécifier le fournisseur de destination (AWS, Azure ou GCP).</p>
+</li>
+<li>
+<p>Lors de la réplication d&#8217;un volume sur un cluster Cloud Volumes ONTAP, vous pouvez spécifier si le Tiering des volumes est activé sur le volume de destination.</p>
+</li>
+<li>
+<p>Pour le nom du volume de destination, cliquez dans le champ et sélectionnez l&#8217;une des 5 options. Vous pouvez laisser l&#8217;administrateur entrer un nom en sélectionnant <strong>texte libre</strong>, ou vous pouvez spécifier que le nom du volume doit avoir un préfixe ou un suffixe spécifique, qu&#8217;il <em>contient</em> certains caractères, ou qu&#8217;il suit les règles d&#8217;une expression régulière (regex) que vous saisissez.</p>
+</li>
+<li>
+<p>La réplication nécessite que les environnements de travail source et destination soient connectés via leurs LIFs intercluster. Entrer l&#8217;adresse IP LIF intercluster pour l&#8217;environnement de travail de destination.</p>
+</li>
+<li>
+<p>Sélectionnez l&#8217;agrégat sur lequel le volume va résider.</p>
+</li>
+<li>
+<p>Lors de la réplication d&#8217;un volume dans un cluster Cloud Volumes ONTAP (pas vers un cluster ONTAP sur site), vous devez spécifier le type de disque à utiliser pour le nouveau volume.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p><strong>Détails de la réplication</strong> : saisissez les détails sur le type et la fréquence de l&#8217;opération de réplication :</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_template_replication_policy.png" alt="Capture d&#8217;écran de la page pour définir les paramètres de réplication de la relation."></span></p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Sélectionner <a href="https://docs.netapp.com/us-en/cloud-manager-replication/concept-replication-policies.html#types-of-replication-policies" target="_blank" rel="noopener">"règle de réplication"</a> que vous voulez utiliser.</p>
+</li>
+<li>
+<p>Choisissez une copie unique ou une planification de réplication récurrente.</p>
+</li>
+<li>
+<p>Activez la surveillance de l&#8217;état de la réplication si vous souhaitez que le rapport de dérive inclut l&#8217;intégrité de la réplication de la relation SnapMirror ainsi que l&#8217;heure de décalage, l&#8217;état et l&#8217;heure du dernier transfert. <a href="task-check-template-compliance.html#replication-health-details-in-the-drift-report">"Voyez ce que cela ressemble dans le rapport de dérive"</a>.</p>
+</li>
+<li>
+<p>Indiquez si vous souhaitez définir une limite de taux de transfert, puis saisissez le taux maximal (en kilo-octets par seconde) auquel les données peuvent être transférées. Vous pouvez entrer une valeur fixe ou fournir un minimum et un maximum et laisser l&#8217;administrateur du stockage sélectionner une valeur dans cette plage.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Cliquez sur <strong>appliquer</strong> pour enregistrer vos modifications.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="que-faire-après-avoir-créé-le-modèle">Que faire après avoir créé le modèle</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Une fois le modèle créé, informez vos administrateurs du stockage qu&#8217;ils peuvent utiliser lors de la création de nouveaux volumes et environnements de travail.</p>
+</div>
+<div class="paragraph">
+<p>Vous pouvez les orienter vers <a href="task-run-templates.html">"Création de ressources à l&#8217;aide de modèles"</a> pour plus d&#8217;informations.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="modifier-ou-supprimer-un-modèle">Modifier ou supprimer un modèle</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Vous pouvez modifier un modèle si vous devez modifier l&#8217;un des paramètres. Après avoir enregistré vos modifications, toutes les ressources futures créées à partir du modèle utiliseront les nouvelles valeurs de paramètres.</p>
+</div>
+<div class="paragraph">
+<p>Vous pouvez également supprimer un modèle si vous n&#8217;en avez plus besoin. La suppression d&#8217;un modèle n&#8217;affecte aucune des ressources créées avec le modèle. Toutefois, aucune vérification de conformité à la dérive ne peut être effectuée après la suppression du modèle.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_template_edit_remove.png" alt="Capture d&#8217;écran indiquant comment modifier un modèle ou supprimer un modèle."></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="faites-une-copie-dun-modèle">Faites une copie d&#8217;un modèle</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Vous pouvez créer une copie d&#8217;un modèle existant. Cela peut vous faire gagner beaucoup de temps si vous souhaitez créer un nouveau modèle très similaire à un modèle existant. Il vous suffit de faire le doublon avec un nouveau nom, puis vous pouvez modifier le modèle pour modifier les deux éléments qui rendent le modèle unique.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_template_duplicate.png" alt="Capture d&#8217;écran indiquant comment dupliquer un modèle."></span></p>
+</div>
+</div>
+</div>
+
+    </article>
+    <!-- Page Container -->
+  </div>
+
+  <div style="clear: both"></div><!-- Main needs to have height --></div>
+
+        </main>
+
+        <footer class="n-footer">
+  <div class="n-footer__bottom">
+    <div class="n-container">
+      <div class="n-footer__bottom-left">
+        <div class="n-footer__copyright">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/us/legal/copyright.aspx">© 2022 NetApp, Inc.</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/terms-of-use/">Conditions générales</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/privacy-policy/">Privacy Policy</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/cookie-policy/">Cookie Policy</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a class="ot-sdk-show-settings">Paramètres de cookies</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="n-footer__bottom-right">
+        <div class="n-footer__copyright">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+              <a target="_self" href="javascript:netapp_mailto()">Envoyer un avis à propos de cette page</a>
+            </li>
+          </ul>
+        </div>
+        <div class="n-footer__social-links">
+          <ul class="n-footer__social-link-list">
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-blog" href="https://blog.netapp.com"
+                target="_blank" title="blog" alt="blog">
+                <span class="n-footer__social-link-text">blog</span>
+                <svg class="n-icon-blog n-footer__social-link-icon" aria-labelledby="title">
+                  <title>blog@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/fr-fr/cloud-manager-app-template/common/svg/sprite.svg#blog"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-community" href="https://community.netapp.com/"
+                target="_blank" title="community" alt="community">
+                <span class="n-footer__social-link-text">community</span>
+                <svg class="n-icon-community n-footer__social-link-icon" aria-labelledby="title">
+                  <title>community@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/fr-fr/cloud-manager-app-template/common/svg/sprite.svg#comments"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-twitter" href="https://twitter.com/netapp"
+                target="_blank" title="twitter" alt="twitter">
+                <span class="n-footer__social-link-text">twitter</span>
+                <svg class="n-icon-twitter n-footer__social-link-icon" aria-labelledby="title">
+                  <title>twitter@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/fr-fr/cloud-manager-app-template/common/svg/sprite.svg#twitter"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-facebook" href="https://www.facebook.com/NetApp"
+                target="_blank" title="facebook" alt="facebook">
+                <span class="n-footer__social-link-text">facebook</span>
+                <svg class="n-icon-facebook n-footer__social-link-icon" aria-labelledby="title">
+                  <title>facebook@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/fr-fr/cloud-manager-app-template/common/svg/sprite.svg#facebook"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-linkedin"
+                href="https://www.linkedin.com/company/netapp" target="_blank" title="linkedin" alt="linkedin">
+                <span class="n-footer__social-link-text">linkedin</span>
+                <svg class="n-icon-linkedin n-footer__social-link-icon" aria-labelledby="title">
+                  <title>linkedin@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/fr-fr/cloud-manager-app-template/common/svg/sprite.svg#linkedin"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-youtube"
+                href="https://www.youtube.com/user/NetAppTV" target="_blank" title="youtube" alt="youtube">
+                <span class="n-footer__social-link-text">youtube</span>
+                <svg class="n-icon-youtube n-footer__social-link-icon" aria-labelledby="title">
+                  <title>youtube@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/fr-fr/cloud-manager-app-template/common/svg/sprite.svg#youtube"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-slideshare"
+                href="https://www.slideshare.net/NetApp" target="_blank" title="slideshare" alt="slideshare">
+                <span class="n-footer__social-link-text">slideshare</span>
+                <svg class="n-icon-slideshare n-footer__social-link-icon" aria-labelledby="title">
+                  <title>slideshare@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/fr-fr/cloud-manager-app-template/common/svg/sprite.svg#slideshare"></use>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+      </div><!-- Elasticsearch JS -->
+      <script type="text/javascript" src='/fr-fr/cloud-manager-app-template/js/bundle.js'></script>
+
+      <!-- Syntax Highlighting -->
+      <script type="text/javascript" src='/fr-fr/cloud-manager-app-template/js/prism.js'></script>
+      <script type="text/javascript" src='/fr-fr/cloud-manager-app-template/js/prism-curl.js'></script>
+    </div>
+    <script>
+      document.body.offsetWidth=1903;
+      cookieLaw = {}
+      cookieLaw.euCountry = "US";
+      cookieLaw.invoke = function(){return false;}
+    </script>
+    <script src='/fr-fr/cloud-manager-app-template/js/www-ntap.js'></script>
+    <script src='/fr-fr/cloud-manager-app-template/js/tabbed-blocks.js'></script>
+    <script src='/fr-fr/cloud-manager-app-template/js/sidebar.js'></script>
+  </body></html>
