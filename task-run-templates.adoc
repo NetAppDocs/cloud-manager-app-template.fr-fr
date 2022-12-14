@@ -24,16 +24,20 @@ Il est possible de créer des volumes pour les systèmes Cloud Volumes ONTAP, Az
 
 Pour commencer rapidement, suivez ces étapes ou faites défiler jusqu'aux sections restantes pour obtenir de plus amples informations.
 
-.<span class=« image »><img src="https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png"[] alt=« one »></span> vérifier les prérequis requis
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["Une seule"] Vérifiez les prérequis requis
+[role="quick-margin-list"]
 * Avant de pouvoir créer un volume pour un système Cloud Volumes ONTAP, ONTAP sur site ou Azure NetApp Files à l'aide d'un modèle, assurez-vous d'avoir accès à un environnement de travail approprié dans lequel le volume sera déployé.
 
 
+[role="quick-margin-list"]
 * Si le modèle active un service cloud sur le volume, par exemple https://docs.netapp.com/us-en/cloud-manager-backup-restore/concept-backup-to-cloud.html["La sauvegarde dans le cloud"^] ou https://docs.netapp.com/us-en/cloud-manager-data-sense/concept-cloud-compliance.html["Sens des données cloud"^], assurez-vous que le service est actif et sous licence dans votre environnement.
 
 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Deux"] Lancez le service modèles d'applications
 [role="quick-margin-para"]
 Sélectionnez *Santé > correction* et cliquez sur l'onglet *modèles*.
 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Trois"] Créez la ressource en exécutant le modèle et en définissant les paramètres
 [role="quick-margin-para"]
 Sélectionnez le modèle, cliquez sur *Exécuter le modèle* et entrez des valeurs dans les champs modifiables pour créer la ressource.
 
@@ -175,6 +179,7 @@ Si les résultats ne correspondent pas à vos attentes, cliquez sur image:screen
 
 
 
+.Résultats
 Le modèle s'exécute et active Cloud Backup sur chaque volume sélectionné à partir des critères de recherche.
 
 Toute erreur sera signalée dans la page _Exécuter votre modèle_ et vous pouvez résoudre les problèmes si nécessaire.

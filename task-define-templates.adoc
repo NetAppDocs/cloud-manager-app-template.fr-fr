@@ -22,16 +22,20 @@ Sélectionnez une ou plusieurs des « actions » fournies par NetApp et créez r
 
 Pour commencer rapidement, suivez ces étapes ou faites défiler jusqu'aux sections restantes pour obtenir de plus amples informations.
 
-.<span class=« image »><img src="https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png"[] alt=« one »></span> vérifier les prérequis requis
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["Une seule"] Vérifiez les prérequis requis
+[role="quick-margin-list"]
 * Avant de pouvoir créer un volume pour un système Cloud Volumes ONTAP, ONTAP sur site ou Azure NetApp Files à l'aide d'un modèle, assurez-vous qu'ils ont accès à un environnement de travail approprié dans lequel le volume sera déployé.
 
 
+[role="quick-margin-list"]
 * Si vous prévoyez d'ajouter une « action » de service cloud à votre modèle, par exemple https://docs.netapp.com/us-en/cloud-manager-backup-restore/concept-backup-to-cloud.html["La sauvegarde dans le cloud"^] ou https://docs.netapp.com/us-en/cloud-manager-data-sense/concept-cloud-compliance.html["Sens des données cloud"^], assurez-vous que le service est actif et sous licence dans votre environnement.
 
 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Deux"] Lancez le service modèles d'applications
 [role="quick-margin-para"]
 Sélectionnez *Santé > correction*, cliquez sur l'onglet *Editeur* et sélectionnez les actions que vous utiliserez dans votre modèle.
 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Trois"] Créez le modèle en sélectionnant « actions » et en définissant les paramètres
 [role="quick-margin-para"]
 Suivez les étapes de création et définissez les actions qui seront effectuées par le modèle.
 
@@ -167,9 +171,10 @@ Dérive permet à BlueXP de surveiller les valeurs codées en dur que vous avez 
 . Cliquez sur *Enregistrer le modèle*.
 
 
+.Résultat
 Le modèle est créé et vous êtes renvoyé au tableau de bord modèles où apparaît votre nouveau modèle.
 
-Voir  to do after you have created the template,ce que vous devez dire à vos utilisateurs sur les modèles.
+Voir <<Que faire après avoir créé le modèle,ce que vous devez dire à vos utilisateurs sur les modèles>>.
 
 
 
@@ -268,9 +273,10 @@ Dérive permet à BlueXP de surveiller les valeurs codées en dur que vous avez 
 . Cliquez sur *Enregistrer le modèle*.
 
 
+.Résultat
 Le modèle est créé et vous êtes renvoyé au tableau de bord modèles où apparaît votre nouveau modèle.
 
-Voir  to do after you have created the template,ce que vous devez dire à vos utilisateurs sur les modèles.
+Voir <<Que faire après avoir créé le modèle,ce que vous devez dire à vos utilisateurs sur les modèles>>.
 
 
 
@@ -366,9 +372,10 @@ Dérive permet à BlueXP de surveiller les valeurs codées en dur que vous avez 
 . Cliquez sur *Enregistrer le modèle*.
 
 
+.Résultat
 Le modèle est créé et vous êtes renvoyé au tableau de bord des modèles où apparaît votre nouveau modèle.
 
-Voir  to do after you have created the template,ce que vous devez dire à vos utilisateurs sur les modèles.
+Voir <<Que faire après avoir créé le modèle,ce que vous devez dire à vos utilisateurs sur les modèles>>.
 
 
 
@@ -449,7 +456,7 @@ https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/concept-licensin
 +
 Si les valeurs du modèle sont correctement terminées, une coche verte est ajoutée à la case « Créer un environnement de travail dans AWS (nœud unique) ».
 
-. Vous pouvez ajouter une autre action dans ce modèle pour créer un volume pour cet environnement de travail. Si c'est le cas, cliquez sur image:button_plus_sign_round.png["bouton plus"] et ajoutez cette action. Découvrez comment  a template for a Cloud Volumes ONTAP volume,Créez un modèle pour un volume Cloud Volumes ONTAP pour plus d'informations.
+. Vous pouvez ajouter une autre action dans ce modèle pour créer un volume pour cet environnement de travail. Si c'est le cas, cliquez sur image:button_plus_sign_round.png["bouton plus"] et ajoutez cette action. Découvrez comment <<Créez un modèle pour un volume Cloud Volumes ONTAP,Créez un modèle pour un volume Cloud Volumes ONTAP>> pour plus d'informations.
 . Entrez le nom du modèle dans le coin supérieur gauche.
 . Cliquez sur *Paramètres et dérive* pour fournir une description plus détaillée de sorte que ce modèle puisse être distingué d'autres modèles similaires, et vous pouvez ainsi activer dérive pour le modèle global, puis cliquez sur *appliquer*.
 +
@@ -458,9 +465,10 @@ Dérive permet à BlueXP de surveiller les valeurs codées en dur que vous avez 
 . Cliquez sur *Enregistrer le modèle*.
 
 
+.Résultat
 Le modèle est créé et vous êtes renvoyé au tableau de bord des modèles où apparaît votre nouveau modèle.
 
-Voir  to do after you have created the template,ce que vous devez dire à vos utilisateurs sur les modèles.
+Voir <<Que faire après avoir créé le modèle,ce que vous devez dire à vos utilisateurs sur les modèles>>.
 
 
 
@@ -544,13 +552,14 @@ L'action _Activer la sauvegarde dans le Cloud sur le volume_ est ajoutée à la 
 +
 image:screenshot_template_add_backup_action.png["Capture d'écran indiquant les étapes à suivre pour ajouter une action Cloud Backup à votre modèle."]
 
-. Vous pouvez maintenant définir les critères de sauvegarde comme décrit dans  Backup functionality to a volume,Ajout de la fonctionnalité de sauvegarde à un volume De sorte que le modèle applique la stratégie de sauvegarde correcte aux volumes que vous sélectionnez à partir de l'action _Find Existing Resources_.
+. Vous pouvez maintenant définir les critères de sauvegarde comme décrit dans <<Ajouter la fonctionnalité de sauvegarde à un volume,Ajout de la fonctionnalité de sauvegarde à un volume>> De sorte que le modèle applique la stratégie de sauvegarde correcte aux volumes que vous sélectionnez à partir de l'action _Find Existing Resources_.
 . Cliquez sur *appliquer* pour enregistrer la personnalisation que vous avez effectuée dans l'action de sauvegarde, puis cliquez sur *Enregistrer le modèle* lorsque vous avez terminé.
 
 
+.Résultat
 Le modèle est créé et vous êtes renvoyé au tableau de bord des modèles où apparaît votre nouveau modèle.
 
-Voir  to do after you have created the template,ce que vous devez dire à vos utilisateurs sur les modèles.
+Voir <<Que faire après avoir créé le modèle,ce que vous devez dire à vos utilisateurs sur les modèles>>.
 
 
 
@@ -593,9 +602,10 @@ Il est recommandé de remplir quelques filtres afin de réduire le nombre de ré
 . Entrez le nom du modèle dans le coin supérieur gauche, puis cliquez sur *Enregistrer le modèle*
 
 
+.Résultat
 Le modèle est créé et vous êtes renvoyé au tableau de bord des modèles où apparaît votre nouveau modèle.
 
-Voir  to do after you have created the template,ce que vous devez dire à vos utilisateurs sur les modèles.
+Voir <<Que faire après avoir créé le modèle,ce que vous devez dire à vos utilisateurs sur les modèles>>.
 
 
 
